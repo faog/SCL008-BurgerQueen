@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import ComponentVisualNav from'./componentsVisual/componentVisualNav';
-import ComponentFuntionsRoleButton from './componentsFunctions/componentFunctionsRoleButton'
+import ComponentFuntionsButton from './componentsFunctions/componentFunctionsButton'
 import './App.css';
 
 class App extends Component {
     render(){
         return (  
             <div>
-                <ComponentVisualNav />   
-                <ComponentFuntionsRoleButton />  
+                <ComponentVisualNav/>   
+                <ComponentFuntionsButton />                
             </div> 
         );
     }
