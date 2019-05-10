@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-class ComponentVisualRoleButton extends Component{
+class ComponentVisualButton extends Component{
     constructor (props){
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -15,4 +15,4 @@ class ComponentVisualRoleButton extends Component{
     }
 }    
 
-export default ComponentVisualRoleButton;
+export default ComponentVisualButton;
