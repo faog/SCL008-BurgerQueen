@@ -10,7 +10,7 @@ class ComponentVisualButton extends Component{
 
     render(){
         return(
-            <button type="button" onClick = {this.handleClick}>{this.props.roles}</button> 
+            <button type="button" className="btn btn-secondary" onClick = {this.handleClick}>{this.props.name}</button> 
         )
     }
 }    
