@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ComponentVisualButton from '../componentsVisual/componentVisualButton';
-import ComponentVisualContainerWaiter from '../componentsVisual/componentVisualContainerWaiter';
-import ComponentVisualContainerKitchen from '../componentsVisual/componentVisualContainerKitchen';
+import TemplateWaiter from '../template/templateWaiter';
+import TemplateKitchen from '../template/templateKitchen';
 configure({ adapter: new Adapter() });
 
 class ComponentFunctionsButton extends Component {
 
     containerWaiter(){
-        ReactDOM.render(<ComponentVisualContainerWaiter/>, document.getElementById('containerrole'));
+        ReactDOM.render(<TemplateWaiter/>, document.getElementById('containerrole'));
     }
 
     containerKitchen(){
-        ReactDOM.render(<ComponentVisualContainerKitchen/>, document.getElementById('containerrole'));
+        ReactDOM.render(<TemplateKitchen/>, document.getElementById('containerrole'));
     }
 
     render(){
