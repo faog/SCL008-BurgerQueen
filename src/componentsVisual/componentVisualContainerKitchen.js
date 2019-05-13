@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-class ComponentVisualContainerKitchen extends Component{
+class ComponentVisualContainerKitchen extends Component{    
     render(){
         return(          
-            <h1>Hola Cocinero</h1>           
+            <h1>Hola Cocina</h1>           
         )
     }
 }
