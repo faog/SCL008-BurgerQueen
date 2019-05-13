@@ -9,3 +9,4 @@ describe('ComponentFunctionsButton', function() {
         expect(shallow(<button className="btn"/>).is('.btn')).toBe(true);
     })  
 });
+
