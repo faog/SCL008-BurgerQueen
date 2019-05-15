@@ -1,0 +1,88 @@
+{
+	"lunch":
+	[
+		{
+			"categoria": "burger",
+			"name": "Hamburguesa",
+			"size": [
+				{
+					"name": "simple",
+					"price": 1500
+				},
+				{
+					"name": "doble",
+					"price": 3500
+				}
+			],
+			"burgerType": ["Pollo", "Vacuno", "Vegetariana"],
+			"toppings": [
+				{
+					"name": "Huevo",
+					"price": 500
+				},
+				{
+					"name": "queso",
+					"price": 500
+				}
+			]
+		},
+		{
+			"categoria": "acompañamiento",
+			"name": "Papas Fritas",
+			"price": 500
+		},
+		{
+			"categoria": "acompañamiento",
+			"name": "Onion Rings",
+			"price": 500
+		},
+		{
+			"categoria": "bebestible",
+			"name": "Agua",
+			"size": [
+				{
+					"name": "500ml",
+					"price": 500
+				},
+				{
+					"name": "750ml",
+					"price": 800
+				}
+			]
+		},
+		{
+			"categoria": "bebestible",
+			"name": "Gaseosa",
+			"size": [
+				{
+					"name": "500ml",
+					"price": 700
+				},
+				{
+					"name": "750ml",
+					"price": 1000
+				}
+			]
+		}
+	],
+	"breakfast":
+	[
+		{
+			"name": "Café americano",
+			"price": 500
+		},
+		{
+			"name": "Café con leche",
+			"price": 700
+		},
+		{
+			"name": "Sandwich de jamón y queso",
+			"price": 1000
+		},
+		{
+			"name": "Jugo natural",
+			"price": 700
+		}
+
+	]
+}
