@@ -4,16 +4,27 @@ const menuFile = require('../data/menuBurgerQueen');
 
 class ComponentVisualMenuOptions extends Component {
   breakfast() {
-    const breakfastElement = menuFile.breakfast.map(e => {
+    const breakfastElement = menuFile.breakfast.map((e) => {
       return (
-        <li>{e.name}-{e.price}</li>
-      )
+        <li>{e.name}</li>
+      );
     })
     return breakfastElement;
   }
 
   lunch() {
-    return JSON.stringify(menuFile.lunch);
+    const lunchElement = menuFile.lunch.map((e) => {
+      return (
+        <li>{e.name}
+        {e.size ? e.size.map(s => {
+          return (
+            <ul>{s.name}</ul>
+          );
+        }) : ''}
+        </li>
+      );
+    })
+    return lunchElement;
   }
 
   render() {
