@@ -6,23 +6,23 @@ const menuFile = require('../data/menuBurgerQueen');
 
 class ComponentVisualMenuOptions extends Component {
   breakfast() {
-    const breakfastElement = menuFile.breakfast.map((e) => {
+    const breakfastElement = menuFile.breakfast.map((element) => {
       return (
-        <ComponentVisualButton name = {e.name}/>
+        <ComponentVisualButton name = {element.name}/>
       )
     })
     return breakfastElement;
   }
 
   lunch() {
-    const lunchElement = menuFile.lunch.map((e) => {
+    const lunchElement = menuFile.lunch.map((element) => {
       return (
-        <p>{e.name}
-        {e.size ? e.size.map(s => {
+        <p>{element.name}
+        {element.size ? element.size.map(size => {
           return (
-            <ComponentVisualButton name = {s.name} />
+            <ComponentVisualButton name = {size.name} />
           );        
-        }) : <ComponentVisualButton name = {e.name} />}
+        }) : <ComponentVisualButton name = {element.name} />}
         </p>
       );
     })
@@ -32,7 +32,6 @@ class ComponentVisualMenuOptions extends Component {
   render() {
     return (
       <div>
-        {this.props.menuname}
         {this.props.menuname === 'Desayuno' ? this.breakfast() : ''}
         {this.props.menuname === 'Resto del día' ? this.lunch() : ''}
       </div>
