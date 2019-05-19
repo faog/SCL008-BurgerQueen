@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ComponentVisualButton from './componentVisualButton';
+import './css/componentVisualMenuOptions.css';
 
 const menuFile = require('../data/menuBurgerQueen');
 
@@ -7,7 +8,7 @@ class ComponentVisualMenuOptions extends Component {
   breakfast() {
     const breakfastElement = menuFile.breakfast.map((e) => {
       return (
-        <ComponentVisualButton name = {e.name} />
+        <ComponentVisualButton name = {e.name}/>
       )
     })
     return breakfastElement;
