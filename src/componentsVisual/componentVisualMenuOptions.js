@@ -5,6 +5,15 @@ import './css/componentVisualMenuOptions.css';
 const menuFile = require('../data/menuBurgerQueen');
 
 class ComponentVisualMenuOptions extends Component {
+  constructor(props) {
+    super(props);
+    this.add = this.add.bind(this);
+  }
+
+  add(e){
+    this.props.onAdd(e);
+  }
+  
   breakfast() {
     const breakfastElement = menuFile.breakfast.map((menuItem) => {
       return (
