@@ -9,9 +9,9 @@ class TemplateWaiter extends Component {
     this.showMenu = this.showMenu.bind(this);
   }
 
-  addProduct(e){
+  addProduct(evt){
     //Estructura que permite abrir y cerrar modales
-    alert(JSON.stringify(e));
+    alert(JSON.stringify(evt));
   }
 
   showMenu(menuname, addFunction) {
@@ -24,8 +24,8 @@ class TemplateWaiter extends Component {
         <div className="row">
           <div className="col-sm">
             <h5>Ingrese la orden</h5>
-            <ComponentVisualButton name="Desayuno" buttonOnClick={e => this.showMenu('Desayuno',this.add, e)} />
-            <ComponentVisualButton name="Resto del día" buttonOnClick={e => this.showMenu('Resto del día',this.add, e)} />
+            <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno',this.add, evt)} />
+            <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día',this.add, evt)} />
             <div id="menuoptions" />
           </div>
           <div className="col-sm">
