@@ -6,26 +6,33 @@ const menuFile = require('../data/menuBurgerQueen');
 
 class ComponentVisualMenuOptions extends Component {
   breakfast() {
-    const breakfastElement = menuFile.breakfast.map((element) => {
+    const breakfastElement = menuFile.breakfast.map((menuItem) => {
       return (
-        <ComponentVisualButton name = {element.name}/>
+        <ComponentVisualButton name = {menuItem.product} buttonOnClick={e => {this.add(menuItem,e)}} className="breakfast"/>
       )
     })
     return breakfastElement;
   }
 
   lunch() {
-    const lunchElement = menuFile.lunch.map((element) => {
+    const lunchElement = menuFile.lunch.map((category) => {
       return (
-        <p>{element.name}
-        {element.size ? element.size.map(size => {
-          return (
-            <ComponentVisualButton name = {size.name} />
-          );        
-        }) : <ComponentVisualButton name = {element.name} />}
-        </p>
-      );
-    })
+        <div key={category.categoryName}>
+          {category.categoryName}
+          {category.items.map((menuItem,index)=>{
+            return (menuItem.size?
+              <div key={menuItem.product}>
+              {menuItem.size.map((size,sizeIndex)=>
+                <ComponentVisualButton key={index+"_"+sizeIndex} name ={size.product} className="lunch" buttonOnClick={e => {this.add([menuItem,size],e)}} />
+          )}
+        </div>
+        :       <ComponentVisualButton key={index} name = {menuItem.product} className="lunch" buttonOnClick={e => {this.add(menuItem,e)}} />
+              );
+            })
+          }
+        </div>
+      )
+    });
     return lunchElement;
   }
 
