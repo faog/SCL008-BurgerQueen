@@ -9,13 +9,13 @@ class TemplateWaiter extends Component {
     this.showMenu = this.showMenu.bind(this);
   }
 
-  add(e){
+  addProduct(e){
     //Estructura que permite abrir y cerrar modales
     alert(JSON.stringify(e));
   }
 
   showMenu(menuname, addFunction) {
-    ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAdd={this.add}/>, document.getElementById('menuoptions'));
+    ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAddProduct={this.addProduct}/>, document.getElementById('menuoptions'));
   }
 
   render() {
