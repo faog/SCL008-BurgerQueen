@@ -12,7 +12,7 @@ class ComponentVisualButton extends Component {
 
   render() {    
     return (
-      <button type="button" className='btn btn-primary mb-2' onClick={this.handleClick}>{this.props.name}</button>
+      <button type="button" className={'btn btn-primary mb-2'+this.props.className} onClick={this.handleClick}>{this.props.name}</button>
     );     
   }
 }    
