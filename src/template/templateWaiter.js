@@ -9,8 +9,13 @@ class TemplateWaiter extends Component {
     this.showMenu = this.showMenu.bind(this);
   }
 
-  showMenu(menuname) {
-    ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} />, document.getElementById('menuoptions'));
+  add(e){
+    //Estructura que permite abrir y cerrar modales
+    alert(JSON.stringify(e));
+  }
+
+  showMenu(menuname, addFunction) {
+    ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAdd={this.add}/>, document.getElementById('menuoptions'));
   }
 
   render() {
@@ -19,8 +24,8 @@ class TemplateWaiter extends Component {
         <div className="row">
           <div className="col-sm">
             <h5>Ingrese la orden</h5>
-            <ComponentVisualButton name="Desayuno" buttonOnClick={e => this.showMenu('Desayuno', e)} />
-            <ComponentVisualButton name="Resto del día" buttonOnClick={e => this.showMenu('Resto del día', e)} />
+            <ComponentVisualButton name="Desayuno" buttonOnClick={e => this.showMenu('Desayuno',this.add, e)} />
+            <ComponentVisualButton name="Resto del día" buttonOnClick={e => this.showMenu('Resto del día',this.add, e)} />
             <div id="menuoptions" />
           </div>
           <div className="col-sm">
