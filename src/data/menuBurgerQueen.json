@@ -16,6 +16,16 @@
 							"product": "Doble",
 							"price": 3500
 						}
+					],
+					"toppings":[
+						{
+							"product": "Huevo",
+							"price": 500
+						},
+						{
+							"product": "queso",
+							"price": 500
+						}
 					]
 				}
 			]
@@ -83,16 +93,6 @@
 			"product": "Jugo natural",
 			"price": 700
 		}
-	],
-	"toppings":
-	[
-		{
-			"product": "Huevo",
-			"price": 500
-		},
-		{
-			"product": "queso",
-			"price": 500
-		}
 	]
+	
 }

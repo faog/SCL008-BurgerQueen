@@ -30,19 +30,38 @@ class ComponentVisualModal extends Component {
           <ToggleButtonGroup className="row mt-3" name="typesgroup">
             {this.props.types.map((burgertype)=>{
               return (
-                <ToggleButton type="radio" name="typesradio" className="m-1" variant="primary" value={burgertype} key={burgertype}>
+                <ToggleButton type="radio" name="typesradio" className="m-1" variant="primary" value={burgertype} 
+                key={burgertype}>
                   {burgertype}
                 </ToggleButton>
               )
             })}
           </ToggleButtonGroup>
+
+          <div className="row">Agregados</div>
+          <div className="row m-1">
+            <ToggleButtonGroup className="row mt-3" name="toppingsgroup">
+              <ToggleButton type="radio" name="toppingsradio" className="m-1" variant="primary"
+              value="" key="notopping" defaultChecked>
+                Ninguno
+              </ToggleButton>
+              {this.props.toppings.map((topping)=>{
+                return (
+                  <ToggleButton type="radio" name="toppingsradio" className="m-1" variant="primary"
+                  value={topping.product} key={this.props.product+"_"+topping.product}>
+                    {topping.product}
+                  </ToggleButton>
+                )
+              })}
+            </ToggleButtonGroup>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.handleClose}>
-            Close
+            Cancelar
           </Button>
           <Button variant="primary" onClick={this.handleClose}>
-            Save Changes
+            Agregar
           </Button>
         </Modal.Footer>
       </Modal>
