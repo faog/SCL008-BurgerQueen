@@ -16,7 +16,8 @@ class TemplateWaiter extends Component {
     // Estructura que permite abrir y cerrar modal de ser necesario
     if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
-        <ComponentVisualModal types={product[0].types} toppings={product[0].toppings} ref={this.modalRef} />,
+        <ComponentVisualModal types={product[0].types} toppings={product[0].toppings} 
+         product={product[0].product} subproduct={product[1].product} ref={this.modalRef}/>,
         document.getElementById('modaldiv'),
       );
       this.modalRef.current.handleShow();
