@@ -10,6 +10,7 @@ class TemplateWaiter extends Component {
     super(props);
     this.showMenu = this.showMenu.bind(this);
     this.addProduct = this.addProduct.bind(this);
+    this.addProductToBill = this.addProductToBill.bind(this);
     this.modalRef = React.createRef();
     this.state = {
       "products" : []
@@ -18,31 +19,40 @@ class TemplateWaiter extends Component {
 
   addProduct(product) {
     // Estructura que permite abrir y cerrar modal de ser necesario
-    console.log("Producto a añadir: " + JSON.stringify(product));
     if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
         <ComponentVisualModal types={product[0].types} toppings={product[0].toppings} 
-         product={product[0].product} subproduct={product[1].product} ref={this.modalRef}/>,
+         product={product[0].product} subproduct={product[1].product} price={product[1].price}
+         onAddToBill={this.addProductToBill} ref={this.modalRef}/>,
         document.getElementById('modaldiv'),
       );
       this.modalRef.current.handleShow();
     }
     else {
-      this.addProductBill(product);
+      this.addProductToBill(product);
     }
   }
 
-  showMenu(menuname, addFunction) {
+  showMenu(menuname) {
     ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAddProduct={this.addProduct} />, document.getElementById('menuoptions'));
   }
 
-  addProductBill(product){
-    console.log(JSON.stringify(product));
+  addProductToBill(product){
     let bill = this.state.products;
-    bill.push(product);
+    if(Array.isArray(product)){
+      let flatProduct = {
+        product:product[0].product,
+        size:product[1].product,
+        price:product[1].price
+      }
+      bill.push(flatProduct);
+    }else{
+      bill.push(product);
+    }
     this.setState({
       "products":bill
     })
+
   }
 
   render() {
@@ -51,8 +61,8 @@ class TemplateWaiter extends Component {
         <div className="row">
           <div className="col-sm">
             <h5>Ingrese la orden</h5>
-            <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno', this.add, evt)} />
-            <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día', this.add, evt)} />
+            <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno', evt)} />
+            <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día', evt)} />
             <div id="menuoptions" />
           </div>
           <div className="col-sm">
