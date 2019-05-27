@@ -11,6 +11,7 @@ class TemplateWaiter extends Component {
     this.showMenu = this.showMenu.bind(this);
     this.addProduct = this.addProduct.bind(this);
     this.addProductToBill = this.addProductToBill.bind(this);
+    this.deleteProductFromBill = this.deleteProductFromBill.bind(this);
     this.modalRef = React.createRef();
     this.state = {
       "products" : []
@@ -52,7 +53,14 @@ class TemplateWaiter extends Component {
     this.setState({
       "products":bill
     })
+  }
 
+  deleteProductFromBill(index){
+    let bill = this.state.products;
+    bill.splice(index, 1);
+    this.setState({
+      products:bill
+    });
   }
 
   render() {
@@ -67,7 +75,7 @@ class TemplateWaiter extends Component {
           </div>
           <div className="col-sm">
             <h5>Resumen Pedido</h5>
-            <ComponentVisualBill products = {this.state.products} />
+            <ComponentVisualBill products = {this.state.products} onDeleteProduct={this.deleteProductFromBill} />
           </div>
         </div>
       </div>
