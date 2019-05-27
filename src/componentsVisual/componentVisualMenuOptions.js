@@ -10,41 +10,47 @@ class ComponentVisualMenuOptions extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  addProduct(product){
+  addProduct(product) {
     this.props.onAddProduct(product);
   }
-  
+
   breakfast() {
-    const breakfastElement = menuFile.breakfast.map((product) => {
-      return (
-        <ComponentVisualButton name = {product.product} buttonOnClick={evt => {this.addProduct(product,evt)}} className="breakfast"/>
-      )
-    })
+    const breakfastElement = menuFile.breakfast.map(product => (
+      <ComponentVisualButton name={product.product} buttonOnClick={(evt) => { this.addProduct(product, evt); }} className="breakfast" />
+    ));
     return breakfastElement;
   }
 
   lunch() {
-    const lunchElement = menuFile.lunch.map((category) => {
-      return (
-        <div key={category.categoryName}>
-          {category.categoryName}
-          {category.items.map((menuItem,index)=>{
-            return (menuItem.size?
-              <div key={menuItem.product}>
+    const lunchElement = menuFile.lunch.map(category => (
+      <div key={category.categoryName}>
+        {category.categoryName}
+        {category.items.map((menuItem, index) => (menuItem.size
+          ? (
+            <div key={menuItem.product}>
               {menuItem.product}
-              {menuItem.size.map((size,sizeIndex)=>
-                <ComponentVisualButton key={index+"_"+sizeIndex} name ={size.product} className="lunch" 
-                buttonOnClick={evt => {this.addProduct([menuItem,size],evt)}} />
-          )}
-        </div>
-        :<ComponentVisualButton key={index} name = {menuItem.product} className="lunch" 
-        buttonOnClick={evt => {this.addProduct(menuItem,evt)}} />
-              );
-            })
+              {menuItem.size.map((size, sizeIndex) => (
+                <ComponentVisualButton
+                  key={`${index}_${sizeIndex}`}
+                  name={size.product}
+                  className="lunch"
+                  buttonOnClick={(evt) => { this.addProduct([menuItem, size], evt); }}
+                />
+              ))}
+            </div>
+          )
+          : (
+            <ComponentVisualButton
+              key={index}
+              name={menuItem.product}
+              className="lunch"
+              buttonOnClick={(evt) => { this.addProduct(menuItem, evt); }}
+            />
+          )
+        ))
           }
-        </div>
-      )
-    });
+      </div>
+    ));
     return lunchElement;
   }
 

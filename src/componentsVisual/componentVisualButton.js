@@ -10,11 +10,11 @@ class ComponentVisualButton extends Component {
     this.props.buttonOnClick();
   }
 
-  render() {    
+  render() {
     return (
-      <button type="button" className={'btn btn-primary mb-2 '+this.props.className} onClick={this.handleClick}>{this.props.name}</button>
-    );     
+      <button type="button" className={`btn btn-primary mb-2 ${this.props.className}`} onClick={this.handleClick}>{this.props.name}</button>
+    );
   }
-}    
+}
 
 export default ComponentVisualButton;

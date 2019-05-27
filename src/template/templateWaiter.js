@@ -12,20 +12,19 @@ class TemplateWaiter extends Component {
     this.modalRef = React.createRef();
   }
 
-  addProduct(product){
-    //Estructura que permite abrir y cerrar modal de ser necesario
-    if(Array.isArray(product) && product[0].types){
+  addProduct(product) {
+    // Estructura que permite abrir y cerrar modal de ser necesario
+    if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
-        <ComponentVisualModal types = {product[0].types} toppings = {product[0].toppings} ref={this.modalRef}/>,
-        document.getElementById("modaldiv")
+        <ComponentVisualModal types={product[0].types} toppings={product[0].toppings} ref={this.modalRef} />,
+        document.getElementById('modaldiv'),
       );
       this.modalRef.current.handleShow();
-
     }
   }
 
   showMenu(menuname, addFunction) {
-    ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAddProduct={this.addProduct}/>, document.getElementById('menuoptions'));
+    ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAddProduct={this.addProduct} />, document.getElementById('menuoptions'));
   }
 
   render() {
@@ -34,8 +33,8 @@ class TemplateWaiter extends Component {
         <div className="row">
           <div className="col-sm">
             <h5>Ingrese la orden</h5>
-            <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno',this.add, evt)} />
-            <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día',this.add, evt)} />
+            <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno', this.add, evt)} />
+            <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día', this.add, evt)} />
             <div id="menuoptions" />
           </div>
           <div className="col-sm">
