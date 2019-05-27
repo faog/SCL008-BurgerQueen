@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ComponentVisualButton from '../componentsVisual/componentVisualButton';
 import ComponentVisualMenuOptions from '../componentsVisual/componentVisualMenuOptions';
+import ComponentVisualModal from '../componentsVisual/componentVisualModal';
 
 class TemplateWaiter extends Component {
   constructor(props) {
     super(props);
     this.showMenu = this.showMenu.bind(this);
+    this.addProduct = this.addProduct.bind(this);
+    this.modalRef = React.createRef();
   }
 
-  addProduct(evt){
-    //Estructura que permite abrir y cerrar modales
-    alert(JSON.stringify(evt));
+  addProduct(product){
+    //Estructura que permite abrir y cerrar modal de ser necesario
+    if(Array.isArray(product) && product[0].types){
+      ReactDOM.render(
+        <ComponentVisualModal types = {product[0].types} toppings = {product[0].toppings} ref={this.modalRef}/>,
+        document.getElementById("modaldiv")
+      );
+      this.modalRef.current.handleShow();
+
+    }
   }
 
   showMenu(menuname, addFunction) {

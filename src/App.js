@@ -9,6 +9,7 @@ class App extends Component {
       <div>
         <ComponentVisualNav />
         <ComponentFuntionsButton />
+        <div id="modaldiv"></div>
       </div>
     );
   }

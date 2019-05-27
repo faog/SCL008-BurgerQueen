@@ -10,14 +10,14 @@ class ComponentVisualMenuOptions extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  addProduct(evt){
-    this.props.onAddProduct(evt);
+  addProduct(product){
+    this.props.onAddProduct(product);
   }
   
   breakfast() {
-    const breakfastElement = menuFile.breakfast.map((menuItem) => {
+    const breakfastElement = menuFile.breakfast.map((product) => {
       return (
-        <ComponentVisualButton name = {menuItem.product} buttonOnClick={evt => {this.addProduct(menuItem,evt)}} className="breakfast"/>
+        <ComponentVisualButton name = {product.product} buttonOnClick={evt => {this.addProduct(product,evt)}} className="breakfast"/>
       )
     })
     return breakfastElement;
@@ -33,10 +33,12 @@ class ComponentVisualMenuOptions extends Component {
               <div key={menuItem.product}>
               {menuItem.product}
               {menuItem.size.map((size,sizeIndex)=>
-                <ComponentVisualButton key={index+"_"+sizeIndex} name ={size.product} className="lunch" buttonOnClick={evt => {this.addProduct([menuItem,size],evt)}} />
+                <ComponentVisualButton key={index+"_"+sizeIndex} name ={size.product} className="lunch" 
+                buttonOnClick={evt => {this.addProduct([menuItem,size],evt)}} />
           )}
         </div>
-        :       <ComponentVisualButton key={index} name = {menuItem.product} className="lunch" buttonOnClick={evt => {this.addProduct(menuItem,evt)}} />
+        :<ComponentVisualButton key={index} name = {menuItem.product} className="lunch" 
+        buttonOnClick={evt => {this.addProduct(menuItem,evt)}} />
               );
             })
           }
