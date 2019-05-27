@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ComponentVisualButton from '../componentsVisual/componentVisualButton';
 import ComponentVisualMenuOptions from '../componentsVisual/componentVisualMenuOptions';
 import ComponentVisualModal from '../componentsVisual/componentVisualModal';
+import ComponentVisualBill from '../componentsVisual/componentVisualBill';
 
 class TemplateWaiter extends Component {
   constructor(props) {
@@ -10,10 +11,14 @@ class TemplateWaiter extends Component {
     this.showMenu = this.showMenu.bind(this);
     this.addProduct = this.addProduct.bind(this);
     this.modalRef = React.createRef();
+    this.state = {
+      "products" : []
+    }
   }
 
   addProduct(product) {
     // Estructura que permite abrir y cerrar modal de ser necesario
+    console.log("Producto a añadir: " + JSON.stringify(product));
     if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
         <ComponentVisualModal types={product[0].types} toppings={product[0].toppings} 
@@ -22,10 +27,22 @@ class TemplateWaiter extends Component {
       );
       this.modalRef.current.handleShow();
     }
+    else {
+      this.addProductBill(product);
+    }
   }
 
   showMenu(menuname, addFunction) {
     ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAddProduct={this.addProduct} />, document.getElementById('menuoptions'));
+  }
+
+  addProductBill(product){
+    console.log(JSON.stringify(product));
+    let bill = this.state.products;
+    bill.push(product);
+    this.setState({
+      "products":bill
+    })
   }
 
   render() {
@@ -40,6 +57,7 @@ class TemplateWaiter extends Component {
           </div>
           <div className="col-sm">
             <h5>Resumen Pedido</h5>
+            <ComponentVisualBill products = {this.state.products} />
           </div>
         </div>
       </div>
