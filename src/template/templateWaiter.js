@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ComponentVisualButton from '../componentsVisual/componentVisualButton';
@@ -14,22 +16,27 @@ class TemplateWaiter extends Component {
     this.deleteProductFromBill = this.deleteProductFromBill.bind(this);
     this.modalRef = React.createRef();
     this.state = {
-      "products" : []
-    }
+      products: [],
+    };
   }
 
   addProduct(product) {
     // Estructura que permite abrir y cerrar modal de ser necesario
     if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
-        <ComponentVisualModal types={product[0].types} toppings={product[0].toppings} 
-         product={product[0].product} subproduct={product[1].product} price={product[1].price}
-         onAddToBill={this.addProductToBill} ref={this.modalRef}/>,
+        <ComponentVisualModal
+          types={product[0].types}
+          toppings={product[0].toppings}
+          product={product[0].product}
+          subproduct={product[1].product}
+          price={product[1].price}
+          onAddToBill={this.addProductToBill}
+          ref={this.modalRef}
+        />,
         document.getElementById('modaldiv'),
       );
       this.modalRef.current.handleShow();
-    }
-    else {
+    } else {
       this.addProductToBill(product);
     }
   }
@@ -38,33 +45,33 @@ class TemplateWaiter extends Component {
     ReactDOM.render(<ComponentVisualMenuOptions menuname={menuname} onAddProduct={this.addProduct} />, document.getElementById('menuoptions'));
   }
 
-  addProductToBill(product){
-    let bill = this.state.products;
-    if(Array.isArray(product)){
-      let flatProduct = {
-        product:product[0].product,
-        size:product[1].product,
-        price:product[1].price
-      }
+  addProductToBill(product) {
+    const bill = this.state.products;
+    if (Array.isArray(product)) {
+      const flatProduct = {
+        product: product[0].product,
+        size: product[1].product,
+        price: product[1].price,
+      };
       bill.push(flatProduct);
-    }else{
+    } else {
       bill.push(product);
     }
     this.setState({
-      "products":bill
-    })
+      products: bill,
+    });
   }
 
-  deleteProductFromBill(index){
-    let bill = this.state.products;
+  deleteProductFromBill(index) {
+    const bill = this.state.products;
     bill.splice(index, 1);
     this.setState({
-      products:bill
+      products: bill,
     });
   }
 
   render() {
-    return (      
+    return (
       <div className="row">
         <section className="col-sm">
           <h5>Ingrese la orden</h5>
@@ -74,9 +81,12 @@ class TemplateWaiter extends Component {
         </section>
         <section className="col-sm">
           <h5>Resumen Pedido</h5>
-          <ComponentVisualBill products = {this.state.products} onDeleteProduct={this.deleteProductFromBill} />
+          <ComponentVisualBill
+            products={this.state.products}
+            onDeleteProduct={this.deleteProductFromBill}
+          />
         </section>
-      </div>      
+      </div>
     );
   }
 }
