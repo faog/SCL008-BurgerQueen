@@ -34,7 +34,7 @@ class ComponentVisualMenuOptions extends Component {
   lunch() {
     const lunchElement = menuFile.lunch.map(category => (
       <div key={category.categoryName}>
-        <p>{category.categoryName}</p>
+        <h6>{category.categoryName}</h6>
         {category.items.map((menuItem, index) => (
           menuItem.size
             ? (
@@ -44,7 +44,7 @@ class ComponentVisualMenuOptions extends Component {
                   <ComponentVisualButton
                     key={`${index}_${sizeIndex}`}
                     name={size.product}
-                    className="lunch"
+                    className="lunch m-1"
                     buttonOnClick={(evt) => { this.addProduct([menuItem, size], evt); }}
                   />
                 ))}
@@ -54,7 +54,7 @@ class ComponentVisualMenuOptions extends Component {
               <ComponentVisualButton
                 key={index}
                 name={menuItem.product}
-                className="lunch"
+                className="lunch m-1"
                 buttonOnClick={(evt) => { this.addProduct(menuItem, evt); }}
               />
             )
