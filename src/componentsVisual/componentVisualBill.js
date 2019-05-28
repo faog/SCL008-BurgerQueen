@@ -26,7 +26,7 @@ class ComponentVisualBill extends Component {
               {' '}
               {product.type}
               {product.topping && product.topping !== '' ? ` con ${product.topping}` : ''}
-                      $
+              $
               {product.price}
               <Button
                 className="col-md-1 align-middle"

@@ -6,6 +6,7 @@ import ComponentVisualButton from '../componentsVisual/componentVisualButton';
 import ComponentVisualMenuOptions from '../componentsVisual/componentVisualMenuOptions';
 import ComponentVisualModal from '../componentsVisual/componentVisualModal';
 import ComponentVisualBill from '../componentsVisual/componentVisualBill';
+import './css/templateWaiter.css';
 
 class TemplateWaiter extends Component {
   constructor(props) {
@@ -75,8 +76,8 @@ class TemplateWaiter extends Component {
       <div className="row">
         <section className="col-sm">
           <h5>Ingrese la orden</h5>
-          <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno', evt)} />
-          <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día', evt)} />
+          <ComponentVisualButton name="Desayuno" className="btnbreakfast m-1" buttonOnClick={evt => this.showMenu('Desayuno', evt)} />
+          <ComponentVisualButton name="Almuerzo/Cena" className="btnlunch-dinner m-1" buttonOnClick={evt => this.showMenu('Resto del día', evt)} />
           <div id="menuoptions" />
         </section>
         <section className="col-sm">
