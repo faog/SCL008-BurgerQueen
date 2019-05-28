@@ -8,5 +8,5 @@ describe('ComponentFunctionsButton', function() {
   it('Debería ser un elemento con className="btn"', function() {
     expect(shallow(<button className="btn"/>).is('.btn')).toBe(true);
   })  
-}
+  }
 );

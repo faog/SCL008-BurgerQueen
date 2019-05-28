@@ -5,6 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import ComponentVisualButton from '../componentsVisual/componentVisualButton';
 import TemplateWaiter from '../template/templateWaiter';
 import TemplateKitchen from '../template/templateKitchen';
+import './css/componentFunctionsButton.css';
 
 configure({ adapter: new Adapter() });
 
@@ -19,12 +20,13 @@ class ComponentFunctionsButton extends Component {
 
   render() {
     return (
-      <div>
-        <ComponentVisualButton name="Mesero" buttonOnClick={this.containerWaiter} />
-        <ComponentVisualButton name="Cocina" buttonOnClick={this.containerKitchen} />
-        <div id="containerrole" />
+      <>
+      <div className="roleoption">
+        <ComponentVisualButton name="Mesero" className="btnnavbar m-2" buttonOnClick={this.containerWaiter} />
+        <ComponentVisualButton name="Cocina" className="btnnavbar m-2" buttonOnClick={this.containerKitchen} />
       </div>
-
+      <div id="containerrole" />
+      </>     
     );
   }
 }

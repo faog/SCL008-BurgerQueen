@@ -8,6 +8,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -21,6 +22,7 @@ module.exports = {
   rules: {
     "linebreak-style": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]    
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "react/destructuring-assignment": [<enabled/>, 'always']
   },
 };
