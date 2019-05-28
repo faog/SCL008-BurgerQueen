@@ -7,13 +7,13 @@ class App extends Component {
   render() {
     return (
       <>
-      <header>
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <img src={logo} alt="Logo"/>
-        </nav>        
-      </header>      
-        <ComponentFuntionsButton/>           
-      <div id="modaldiv"></div>
+        <header>
+          <nav className="navbar navbar-expand-lg navbar-light">
+            <img src={logo} alt="Logo" />
+          </nav>
+        </header>
+        <ComponentFuntionsButton />
+        <div id="modaldiv" />
       </>
     );
   }
