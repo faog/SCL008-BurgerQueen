@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import ComponentVisualNav from './componentsVisual/componentVisualNav';
 import ComponentFuntionsButton from './componentsFunctions/componentFunctionsButton';
+import logo from './img/burger-queen.png';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <ComponentVisualNav />
-        <ComponentFuntionsButton />
-        <div id="modaldiv"></div>
-      </div>
+      <>
+      <header>
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <img src={logo} alt="Logo"/>
+        </nav>        
+      </header>      
+        <ComponentFuntionsButton/>           
+      <div id="modaldiv"></div>
+      </>
     );
   }
 }

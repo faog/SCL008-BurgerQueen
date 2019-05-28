@@ -1,0 +1,11 @@
+.btnnavbar{
+    width: 100px;
+    height: 40px;
+}
+
+.roleoption{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 10px 50px;
+}

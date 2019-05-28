@@ -64,21 +64,19 @@ class TemplateWaiter extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            <h5>Ingrese la orden</h5>
-            <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno', evt)} />
-            <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día', evt)} />
-            <div id="menuoptions" />
-          </div>
-          <div className="col-sm">
-            <h5>Resumen Pedido</h5>
-            <ComponentVisualBill products = {this.state.products} onDeleteProduct={this.deleteProductFromBill} />
-          </div>
-        </div>
-      </div>
+    return (      
+      <div className="row">
+        <section className="col-sm">
+          <h5>Ingrese la orden</h5>
+          <ComponentVisualButton name="Desayuno" buttonOnClick={evt => this.showMenu('Desayuno', evt)} />
+          <ComponentVisualButton name="Resto del día" buttonOnClick={evt => this.showMenu('Resto del día', evt)} />
+          <div id="menuoptions" />
+        </section>
+        <section className="col-sm">
+          <h5>Resumen Pedido</h5>
+          <ComponentVisualBill products = {this.state.products} onDeleteProduct={this.deleteProductFromBill} />
+        </section>
+      </div>      
     );
   }
 }
