@@ -1,11 +1,14 @@
 .btnnavbar{
-    width: 100px;
-    height: 40px;
+    width: 120px;
+    height: 50px;
+    font-size:24px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;    
 }
 
 .roleoption{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    margin: 10px 50px;
+    margin: 10px 50px;    
 }
