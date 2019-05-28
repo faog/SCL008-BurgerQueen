@@ -2,65 +2,75 @@
 	"lunch":
 	[
 		{
-			"categoria": "burger",
-			"name": "Hamburguesa",
-			"size": [
+			"categoryName":"Hamburguesas",
+			"items":[
 				{
-					"name": "simple",
-					"price": 1500
-				},
-				{
-					"name": "doble",
-					"price": 3500
+					"product": "Hamburguesa",
+					"types": ["Pollo", "Vacuno", "Vegetariana"],
+					"size": [
+						{
+							"product": "Simple",
+							"price": 1500
+						},
+						{
+							"product": "Doble",
+							"price": 3500
+						}
+					],
+					"toppings":[
+						{
+							"product": "Huevo",
+							"price": 500
+						},
+						{
+							"product": "queso",
+							"price": 500
+						}
+					]
 				}
-			],
-			"burgerType": ["Pollo", "Vacuno", "Vegetariana"],
-			"toppings": [
+			]
+		},
+		{
+			"categoryName":"Acompañamientos",
+			"items":[
 				{
-					"name": "Huevo",
+					"product": "Papas Fritas",
 					"price": 500
 				},
 				{
-					"name": "queso",
+					"product": "Onion Rings",
 					"price": 500
 				}
 			]
 		},
 		{
-			"categoria": "acompañamiento",
-			"name": "Papas Fritas",
-			"price": 500
-		},
-		{
-			"categoria": "acompañamiento",
-			"name": "Onion Rings",
-			"price": 500
-		},
-		{
-			"categoria": "bebestible",
-			"name": "Agua",
-			"size": [
+			"categoryName":"Bebestibles",
+			"items":[
 				{
-					"name": "500ml",
-					"price": 500
+					"product": "Agua",
+					"size": [
+						{
+							"product": "500ml",
+							"price": 500
+						},
+						{
+							"product": "750ml",
+							"price": 800
+						}
+					]
 				},
 				{
-					"name": "750ml",
-					"price": 800
-				}
-			]
-		},
-		{
-			"categoria": "bebestible",
-			"name": "Gaseosa",
-			"size": [
-				{
-					"name": "500ml",
-					"price": 700
-				},
-				{
-					"name": "750ml",
-					"price": 1000
+					"product": "Gaseosa",
+					"size": [
+						{
+							"product": "500ml",
+							"price": 700
+						},
+						{
+							"product": "750ml",
+							"price": 1000
+						}
+					]
 				}
 			]
 		}
@@ -68,21 +78,21 @@
 	"breakfast":
 	[
 		{
-			"name": "Café americano",
+			"product": "Café americano",
 			"price": 500
 		},
 		{
-			"name": "Café con leche",
+			"product": "Café con leche",
 			"price": 700
 		},
 		{
-			"name": "Sandwich de jamón y queso",
+			"product": "Sandwich de jamón y queso",
 			"price": 1000
 		},
 		{
-			"name": "Jugo natural",
+			"product": "Jugo natural",
 			"price": 700
 		}
-
 	]
+	
 }
