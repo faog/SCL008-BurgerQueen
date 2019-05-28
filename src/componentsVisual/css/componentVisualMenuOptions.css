@@ -1,7 +1,23 @@
 .breakfast {
-    background-color: brown;
+    width: 240px;
+    height: 40px;
+    font-size:18px;
+    font-family: 'Lato', sans-serif;
+    text-align: center; 
+    display: block;
+    margin:auto;
+}
+
+.breakfast:active, .lunch:active{
+    background-color: #EF6C00!important;
+    border-color: #EF6C00!important;      
 }
 
 .lunch {
-    background-color: green;
+    width: 100px;
+    height: 40px;
+    font-size:18px;
+    font-family: 'Lato', sans-serif;
+    text-align: center; 
+    
 }
