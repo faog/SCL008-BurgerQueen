@@ -1,7 +1,6 @@
-/* eslint-disable template-curly-spacing */
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
