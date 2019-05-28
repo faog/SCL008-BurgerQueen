@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { configure } from 'enzyme';
@@ -21,12 +22,12 @@ class ComponentFunctionsButton extends Component {
   render() {
     return (
       <>
-      <div className="roleoption">
-        <ComponentVisualButton name="Mesero" className="btnnavbar m-2" buttonOnClick={this.containerWaiter} />
-        <ComponentVisualButton name="Cocina" className="btnnavbar m-2" buttonOnClick={this.containerKitchen} />
-      </div>
-      <div id="containerrole" />
-      </>     
+        <div className="roleoption">
+          <ComponentVisualButton name="Mesero" className="btnnavbar m-2" buttonOnClick={this.containerWaiter} />
+          <ComponentVisualButton name="Cocina" className="btnnavbar m-2" buttonOnClick={this.containerKitchen} />
+        </div>
+        <div id="containerrole" />
+      </>
     );
   }
 }
