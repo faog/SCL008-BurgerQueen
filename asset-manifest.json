@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/burgerqueen/static/css/main.75fae005.chunk.css",
-    "main.js": "/burgerqueen/static/js/main.30d1f4d9.chunk.js",
-    "main.js.map": "/burgerqueen/static/js/main.30d1f4d9.chunk.js.map",
-    "runtime~main.js": "/burgerqueen/static/js/runtime~main.04b5a058.js",
-    "runtime~main.js.map": "/burgerqueen/static/js/runtime~main.04b5a058.js.map",
-    "static/js/2.1f9ed08d.chunk.js": "/burgerqueen/static/js/2.1f9ed08d.chunk.js",
-    "static/js/2.1f9ed08d.chunk.js.map": "/burgerqueen/static/js/2.1f9ed08d.chunk.js.map",
-    "index.html": "/burgerqueen/index.html",
-    "precache-manifest.bc2da08e7d9dbed910b4772cd011c6a6.js": "/burgerqueen/precache-manifest.bc2da08e7d9dbed910b4772cd011c6a6.js",
-    "service-worker.js": "/burgerqueen/service-worker.js",
-    "static/css/main.75fae005.chunk.css.map": "/burgerqueen/static/css/main.75fae005.chunk.css.map",
-    "static/media/burger-queen.png": "/burgerqueen/static/media/burger-queen.539b4462.png"
+    "main.css": "/SCL008-BurgerQueen/static/css/main.7b4fe936.chunk.css",
+    "main.js": "/SCL008-BurgerQueen/static/js/main.c988607e.chunk.js",
+    "main.js.map": "/SCL008-BurgerQueen/static/js/main.c988607e.chunk.js.map",
+    "runtime~main.js": "/SCL008-BurgerQueen/static/js/runtime~main.d5fd1296.js",
+    "runtime~main.js.map": "/SCL008-BurgerQueen/static/js/runtime~main.d5fd1296.js.map",
+    "static/js/2.3aa6b0be.chunk.js": "/SCL008-BurgerQueen/static/js/2.3aa6b0be.chunk.js",
+    "static/js/2.3aa6b0be.chunk.js.map": "/SCL008-BurgerQueen/static/js/2.3aa6b0be.chunk.js.map",
+    "index.html": "/SCL008-BurgerQueen/index.html",
+    "precache-manifest.5561410f05566a137ae5c11dd164871c.js": "/SCL008-BurgerQueen/precache-manifest.5561410f05566a137ae5c11dd164871c.js",
+    "service-worker.js": "/SCL008-BurgerQueen/service-worker.js",
+    "static/css/main.7b4fe936.chunk.css.map": "/SCL008-BurgerQueen/static/css/main.7b4fe936.chunk.css.map",
+    "static/media/burger-queen.png": "/SCL008-BurgerQueen/static/media/burger-queen.36691a42.png"
   }
 }
