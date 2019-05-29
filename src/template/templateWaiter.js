@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
@@ -15,6 +17,7 @@ class TemplateWaiter extends Component {
     this.addProduct = this.addProduct.bind(this);
     this.addProductToBill = this.addProductToBill.bind(this);
     this.deleteProductFromBill = this.deleteProductFromBill.bind(this);
+    this.saveBill = this.saveBill.bind(this);
     this.modalRef = React.createRef();
     this.state = {
       products: [],
@@ -22,9 +25,9 @@ class TemplateWaiter extends Component {
   }
 
   addProduct(product) {
-    // Estructura que permite abrir y cerrar modal de ser necesario
     if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
+        // Estructura que permite abrir y cerrar modal de ser necesario
         <ComponentVisualModal
           types={product[0].types}
           toppings={product[0].toppings}
@@ -71,6 +74,16 @@ class TemplateWaiter extends Component {
     });
   }
 
+  saveBill() {
+    const customername = document.getElementById('customername').value;
+    this.props.firebase.saveBill(this.state.products, customername).then(() => {
+      alert('Enviado con éxito');
+      // Limpiar
+    }).catch((error) => {
+      alert(`Error: ${error}`);
+    });
+  }
+
   render() {
     return (
       <div className="row">
@@ -85,6 +98,7 @@ class TemplateWaiter extends Component {
           <ComponentVisualBill
             products={this.state.products}
             onDeleteProduct={this.deleteProductFromBill}
+            onSaveBill={this.saveBill}
           />
         </section>
       </div>

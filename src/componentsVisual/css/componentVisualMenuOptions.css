@@ -1,11 +1,12 @@
 .breakfast {
     width: 240px;
-    height: 40px;
+    height: 50px;
     font-size:18px;
     font-family: 'Lato', sans-serif;
     text-align: center; 
-    display: block;
-    margin:auto;
+    background-color: #283593!important;
+    color:white;  
+    border: solid 1px #283593!important;  
 }
 
 .breakfast:active, .lunch:active{
@@ -14,10 +15,24 @@
 }
 
 .lunch {
-    width: 100px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     font-size:18px;
     font-family: 'Lato', sans-serif;
     text-align: center; 
-    
+    background-color: #283593!important;
+    color:white;   
+    border: solid 1px #283593!important;  
+}
+
+h6{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+p{
+    font-size: 18px;
+    margin-bottom: 5px;
 }
