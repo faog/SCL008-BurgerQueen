@@ -39,17 +39,17 @@ class ComponentVisualBill extends Component {
           <Form.Label>Nombre cliente:</Form.Label>
           <Form.Control required id="customername" className="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
           <Form.Control.Feedback type="invalid">
-            Debe ingresar un nombre de cliente
+            <p id="validation">Debe ingresar un nombre de cliente</p>
           </Form.Control.Feedback>
           {this.props.products.map((product, index) => (
-            <div className=" row border" key={index}>
-              <div className="productorder col-md-10 align-middle">
+            <div className="productsorder row border" key={index}>
+              <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
                 {' '}
                 {product.size}
                 {' '}
                 {product.type}
-                {product.topping && product.topping !== '' ? ` con ${product.topping}` : ''}
+                {product.topping && product.topping !== '' ? ` con ${product.topping} ` : ' '}
                 $
                 {product.price}
               </div>
@@ -64,7 +64,7 @@ class ComponentVisualBill extends Component {
             </div>
           ))}
         </div>
-        <div className="row">
+        <div className="btnkitchen row">
           <Button type="submit">Enviar a cocina</Button>
         </div>
       </Form>
