@@ -1,0 +1,24 @@
+.order{
+    width:100%;
+    display:block;
+    margin:auto;    
+}
+
+.customername{
+    margin-bottom:20px;
+}
+
+.productdelete{
+    background-color:#E53935;
+    border:solid 1px #E53935;
+    display:block;
+    margin:5px 0px;  
+    height: 100%;
+    width: 100%;
+}
+
+.productorder{
+    width:100%;
+    display:block;
+    margin:auto;  
+}

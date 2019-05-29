@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './css/componentVisualBill.css';
+import ComponentVisualButton from './componentVisualButton';
 
 class ComponentVisualBill extends Component {
   constructor(props, context) {
@@ -33,16 +34,16 @@ class ComponentVisualBill extends Component {
   render() {
     const { validated } = this.state;
     return (
-      <Form noValidate validated={validated} onSubmit={evt => this.handleSubmit(evt)}>
-        <div className="row">
+      <Form className="order row" noValidate validated={validated} onSubmit={evt => this.handleSubmit(evt)}>
+        <div>
           <Form.Label>Nombre cliente:</Form.Label>
-          <Form.Control required id="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
+          <Form.Control required id="customername" className="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
           <Form.Control.Feedback type="invalid">
             Debe ingresar un nombre de cliente
           </Form.Control.Feedback>
           {this.props.products.map((product, index) => (
-            <div className="row border" key={index}>
-              <div className="col-md-11 align-middle">
+            <div className=" row border" key={index}>
+              <div className="productorder col-md-10 align-middle">
                 {product.product}
                 {' '}
                 {product.size}
@@ -51,16 +52,15 @@ class ComponentVisualBill extends Component {
                 {product.topping && product.topping !== '' ? ` con ${product.topping}` : ''}
                 $
                 {product.price}
-                <Button
-                  className="col-md-1 align-middle"
-                  variant="outline-danger"
-                  size="sm"
-                  key={`btn ${index}`}
-                  onClick={evt => this.deleteProduct(index, evt)}
-                >
-                  X
-                </Button>
               </div>
+              <ComponentVisualButton
+                className="productdelete col-md-2"
+                variant="outline-danger"
+                size="sm"
+                name="X"
+                key={`btn ${index}`}
+                buttonOnClick={evt => this.deleteProduct(index, evt)}
+              />
             </div>
           ))}
         </div>
