@@ -4,6 +4,9 @@
     font-size:18px;
     font-family: 'Lato', sans-serif;
     text-align: center; 
+    background-color: #283593!important;
+    color:white;  
+    border: solid 1px #283593!important;  
 }
 
 .breakfast:active, .lunch:active{
@@ -16,7 +19,10 @@
     height: 50px;
     font-size:18px;
     font-family: 'Lato', sans-serif;
-    text-align: center;     
+    text-align: center; 
+    background-color: #283593!important;
+    color:white;   
+    border: solid 1px #283593!important;  
 }
 
 h6{

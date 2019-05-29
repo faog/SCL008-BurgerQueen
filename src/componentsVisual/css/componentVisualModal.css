@@ -6,6 +6,9 @@
     text-align: center; 
     display:block;
     margin:auto;
+    background-color: #283593!important;
+    color:white; 
+    border: solid 1px #283593!important;
 }
 
 .burgertype:active, .toppings:active{
