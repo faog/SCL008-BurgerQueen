@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './css/componentVisualBill.css';
+import ComponentVisualButton from './componentVisualButton';
 
 class ComponentVisualBill extends Component {
   constructor(props, context) {
@@ -13,17 +14,17 @@ class ComponentVisualBill extends Component {
   }
 
   handleSubmit(event) {
+    // Obtenemos el formulario a partir del evento
     const form = event.currentTarget;
+    // Prevenir el submit
+    event.preventDefault();
+    event.stopPropagation();
+    // Si el formulario pasa las validaciones, se guarda la comanda en Firebase
     if (form.checkValidity() === true) {
-      this.setState({ validated: true });
-      event.preventDefault();
-      event.stopPropagation();
       this.props.onSaveBill();
-    } else {
-      this.setState({ validated: false });
-      event.preventDefault();
-      event.stopPropagation();
     }
+    // Habilita el despliegue de los mensajes de error
+    this.setState({ validated: true });
   }
 
   deleteProduct(index) {
@@ -33,38 +34,37 @@ class ComponentVisualBill extends Component {
   render() {
     const { validated } = this.state;
     return (
-      <Form noValidate validated={validated} onSubmit={evt => this.handleSubmit(evt)}>
-        <div className="row">
+      <Form className="order row" noValidate validated={validated} onSubmit={evt => this.handleSubmit(evt)}>
+        <div>
           <Form.Label>Nombre cliente:</Form.Label>
-          <Form.Control required id="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
+          <Form.Control required id="customername" className="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
           <Form.Control.Feedback type="invalid">
-            Debe ingresar un nombre de cliente
+            <p id="validation">Debe ingresar un nombre de cliente</p>
           </Form.Control.Feedback>
           {this.props.products.map((product, index) => (
-            <div className="row border" key={index}>
-              <div className="col-md-11 align-middle">
+            <div className="productsorder row border" key={index}>
+              <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
                 {' '}
                 {product.size}
                 {' '}
                 {product.type}
-                {product.topping && product.topping !== '' ? ` con ${product.topping}` : ''}
+                {product.topping && product.topping !== '' ? ` con ${product.topping} ` : ' '}
                 $
                 {product.price}
-                <Button
-                  className="col-md-1 align-middle"
-                  variant="outline-danger"
-                  size="sm"
-                  key={`btn ${index}`}
-                  onClick={evt => this.deleteProduct(index, evt)}
-                >
-                  X
-                </Button>
               </div>
+              <ComponentVisualButton
+                className="productdelete col-md-2"
+                variant="outline-danger"
+                size="sm"
+                name="X"
+                key={`btn ${index}`}
+                buttonOnClick={evt => this.deleteProduct(index, evt)}
+              />
             </div>
           ))}
         </div>
-        <div className="row">
+        <div className="btnkitchen row">
           <Button type="submit">Enviar a cocina</Button>
         </div>
       </Form>

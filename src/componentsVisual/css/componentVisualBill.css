@@ -1,0 +1,49 @@
+.order{
+    width:100%;
+    display:block;
+    margin:auto;    
+}
+
+.productdelete{
+    background-color:#E53935;
+    border:solid 1px #E53935;
+    display:block;
+    margin:5px 0px;  
+    height: 100%;
+    width: 100%;
+}
+
+#customername{
+    font-size: 20px;
+}
+
+.productsorder{
+    width:100%;
+    margin:0px;
+}
+
+.productorder{
+    width:100%;
+    display:block;
+    margin:auto;  
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+}
+
+.btnkitchen{
+    margin-top:20px;
+    font-size: 22px;
+    width: 200px;
+    height: 50px;
+    float:right;    
+}
+
+.btnkitchen button{
+    font-size:20px;
+    font-family: 'Lato', sans-serif;
+}
+
+.form-label{
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+}
