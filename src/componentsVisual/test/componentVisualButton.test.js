@@ -9,6 +9,6 @@ import { shallow } from 'enzyme';
 
 describe('ComponentFunctionsButton', () => {
   it('Debería ser un elemento con className="btn"', () => {
-    expect(shallow(<button className="btn" />).is('.btn')).toBe(true);
+    expect(shallow(<button className="btn btn-primary mb-2" />).is('.btn btn-primary mb-2')).toBe(true);
   });
 },);
