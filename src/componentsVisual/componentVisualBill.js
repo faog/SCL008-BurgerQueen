@@ -14,17 +14,17 @@ class ComponentVisualBill extends Component {
   }
 
   handleSubmit(event) {
+    // Obtenemos el formulario a partir del evento
     const form = event.currentTarget;
+    // Prevenir el submit
+    event.preventDefault();
+    event.stopPropagation();
+    // Si el formulario pasa las validaciones, se guarda la comanda en Firebase
     if (form.checkValidity() === true) {
-      this.setState({ validated: true });
-      event.preventDefault();
-      event.stopPropagation();
       this.props.onSaveBill();
-    } else {
-      this.setState({ validated: false });
-      event.preventDefault();
-      event.stopPropagation();
     }
+    // Habilita el despliegue de los mensajes de error
+    this.setState({ validated: true });
   }
 
   deleteProduct(index) {
