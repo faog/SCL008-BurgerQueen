@@ -12,6 +12,19 @@ class ComponentVisualBill extends Component {
     this.state = { validated: false };
   }
 
+  handleSubmit(event) {
+    const form = event.currentTarget;
+    if (form.checkValidity() === true) {
+      this.setState({ validated: true });
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      this.setState({ validated: false });
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
   deleteProduct(index) {
     this.props.onDeleteProduct(index);
   }
@@ -19,7 +32,7 @@ class ComponentVisualBill extends Component {
   render() {
     const { validated } = this.state;
     return (
-      <Form noValidate validate={validated} onSubmit={evt => this.handleSubmit(evt)}>
+      <Form noValidate validated={validated} onSubmit={evt => this.handleSubmit(evt)}>
         <div className="row">
           <Form.Label>Nombre cliente:</Form.Label>
           <Form.Control required id="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
