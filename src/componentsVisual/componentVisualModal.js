@@ -137,7 +137,7 @@ class ComponentVisualModal extends Component {
             </ToggleButtonGroup>
           </div>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="modalfooter">
           <Button variant="secondary" className="btnfootermodal" onClick={this.handleClose}>
             Cancelar
           </Button>
