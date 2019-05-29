@@ -39,7 +39,7 @@ class ComponentFunctionsButton extends Component {
 
         </div>
         <div id="containerrole">
-        <FirebaseContext.Consumer>
+          <FirebaseContext.Consumer>
             {(firebase) => {
               if (this.state.function === 'kitchen') {
                 return <TemplateKitchen firebase={firebase} />;
@@ -49,7 +49,7 @@ class ComponentFunctionsButton extends Component {
               }
             }}
           </FirebaseContext.Consumer>
-          </div>
+        </div>
       </>
     );
   }
