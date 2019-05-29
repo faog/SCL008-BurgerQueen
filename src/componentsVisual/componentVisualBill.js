@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import './css/componentVisualBill.css';
 
 class ComponentVisualBill extends Component {
   constructor(props, context) {

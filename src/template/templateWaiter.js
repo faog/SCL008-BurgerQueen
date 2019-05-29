@@ -22,9 +22,9 @@ class TemplateWaiter extends Component {
   }
 
   addProduct(product) {
-    // Estructura que permite abrir y cerrar modal de ser necesario
     if (Array.isArray(product) && product[0].types) {
       ReactDOM.render(
+        // Estructura que permite abrir y cerrar modal de ser necesario
         <ComponentVisualModal
           types={product[0].types}
           toppings={product[0].toppings}
