@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import {
   Button, Modal, ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
+import './css/componentVisualModal.css';
 
 class ComponentVisualModal extends Component {
   constructor(props, context) {
@@ -77,18 +78,20 @@ class ComponentVisualModal extends Component {
             {this.props.subproduct}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modalbody">
           <div className="row">
-            Tipos de
-            {' '}
-            {this.props.product}
+            <h5>
+              Tipos de
+              {' '}
+              {this.props.product}
+            </h5>
           </div>
-          <ToggleButtonGroup className="row mt-3" name="typesgroup">
+          <ToggleButtonGroup className="row" name="typesgroup">
             {this.props.types.map(burgertype => (
               <ToggleButton
                 type="radio"
                 name="typesradio"
-                className="m-1"
+                className="burgertype m-1"
                 variant="primary"
                 value={burgertype}
                 key={burgertype}
@@ -99,13 +102,17 @@ class ComponentVisualModal extends Component {
             ))}
           </ToggleButtonGroup>
 
-          <div className="row">Agregados</div>
+          <div className="row">
+            <h5>
+            Agregados
+            </h5>
+          </div>
           <div className="row m-1">
-            <ToggleButtonGroup className="row mt-3" name="toppingsgroup">
+            <ToggleButtonGroup className="row" name="toppingsgroup">
               <ToggleButton
                 type="radio"
                 name="toppingsradio"
-                className="m-1"
+                className="toppings m-1"
                 variant="primary"
                 value=""
                 key="notopping"
@@ -118,7 +125,7 @@ class ComponentVisualModal extends Component {
                 <ToggleButton
                   type="radio"
                   name="toppingsradio"
-                  className="m-1"
+                  className="toppings m-1"
                   variant="primary"
                   value={topping.product}
                   key={`${this.props.product}_${topping.product}`}
@@ -131,10 +138,10 @@ class ComponentVisualModal extends Component {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
+          <Button variant="secondary" className="btnfootermodal" onClick={this.handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={this.handleAdd}>
+          <Button variant="primary" className="btnfootermodal" onClick={this.handleAdd}>
             Agregar
           </Button>
         </Modal.Footer>

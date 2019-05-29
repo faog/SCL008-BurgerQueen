@@ -1,0 +1,33 @@
+.burgertype, .toppings{
+    width: 140px;
+    height: 50px;
+    font-size:18px;
+    font-family: 'Lato', sans-serif;
+    text-align: center; 
+    display:block;
+    margin:auto;
+}
+
+.burgertype:active, .toppings:active{
+    background-color: #EF6C00!important;
+    background-color: #EF6C00!important; 
+}
+
+.modalbody{
+    display:block;
+    margin:auto;
+}
+
+.row h5{
+    font-weight: bold;    
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.btnfootermodal{
+    width: 100px;
+    height: 50px;
+    font-size:18px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
