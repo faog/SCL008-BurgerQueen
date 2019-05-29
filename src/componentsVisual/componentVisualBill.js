@@ -18,6 +18,7 @@ class ComponentVisualBill extends Component {
       this.setState({ validated: true });
       event.preventDefault();
       event.stopPropagation();
+      this.props.onSaveBill();
     } else {
       this.setState({ validated: false });
       event.preventDefault();
