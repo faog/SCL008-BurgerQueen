@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ComponentFuntionsButton from './componentsFunctions/componentFunctionsButton';
+import ComponentVisualOptionRole from './componentsVisual/componentVisualOptionRole';
 import logo from './img/burger-queen.png';
 import './App.css';
 
@@ -12,7 +12,7 @@ class App extends Component {
             <img src={logo} alt="Logo" />
           </nav>
         </header>
-        <ComponentFuntionsButton />
+        <ComponentVisualOptionRole />
         <div id="modaldiv" />
       </>
     );
