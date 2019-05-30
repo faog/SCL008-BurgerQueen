@@ -10,6 +10,7 @@ class ComponentVisualBill extends Component {
   constructor(props, context) {
     super(props, context);
     this.deleteProduct = this.deleteProduct.bind(this);
+    this.totalValueProducts = this.totalValueProducts.bind(this);
     this.state = { validated: false };
   }
 
@@ -29,6 +30,14 @@ class ComponentVisualBill extends Component {
 
   deleteProduct(index) {
     this.props.onDeleteProduct(index);
+  }
+
+  totalValueProducts() {
+    let total = 0;
+    this.props.products.forEach((product) => {
+      total += product.price;
+    });
+    return total;
   }
 
   render() {
@@ -64,7 +73,13 @@ class ComponentVisualBill extends Component {
             </div>
           ))}
         </div>
+        <p id="totalprice">
+        Total:$
+          {' '}
+          {this.totalValueProducts()}
+        </p>
         <div className="btnkitchen row">
+          <ComponentVisualButton className="clean m-2" buttonOnClick={this.props.onClearBill} name="Limpiar" />
           <Button type="submit">Enviar a cocina</Button>
         </div>
       </Form>

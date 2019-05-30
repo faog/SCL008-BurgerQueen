@@ -18,6 +18,7 @@ class TemplateWaiter extends Component {
     this.addProductToBill = this.addProductToBill.bind(this);
     this.deleteProductFromBill = this.deleteProductFromBill.bind(this);
     this.saveBill = this.saveBill.bind(this);
+    this.clearBill = this.clearBill.bind(this);
     this.modalRef = React.createRef();
     this.state = {
       products: [],
@@ -78,10 +79,16 @@ class TemplateWaiter extends Component {
     const customername = document.getElementById('customername').value;
     this.props.firebase.saveBill(this.state.products, customername).then(() => {
       alert('Enviado con éxito');
-      // Limpiar
+      // Limpiar el pedido
+      this.clearBill();
     }).catch((error) => {
       alert(`Error: ${error}`);
     });
+  }
+
+  clearBill() {
+    document.getElementById('customername').value = '';
+    this.setState({ products: [] });
   }
 
   render() {
@@ -99,6 +106,7 @@ class TemplateWaiter extends Component {
             products={this.state.products}
             onDeleteProduct={this.deleteProductFromBill}
             onSaveBill={this.saveBill}
+            onClearBill={this.clearBill}
           />
         </section>
       </div>
