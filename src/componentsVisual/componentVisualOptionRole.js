@@ -4,15 +4,15 @@
 import React, { Component } from 'react';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ComponentVisualButton from '../componentsVisual/componentVisualButton';
+import ComponentVisualButton from './componentVisualButton';
 import TemplateWaiter from '../template/templateWaiter';
 import TemplateKitchen from '../template/templateKitchen';
 import { FirebaseContext } from '../data/firebase';
-import './css/componentFunctionsButton.css';
+import './css/componentVisualOptionRole.css';
 
 configure({ adapter: new Adapter() });
 
-class ComponentFunctionsButton extends Component {
+class ComponentVisualOptionRole extends Component {
   constructor(props, context) {
     super(props, context);
     this.containerKitchen = this.containerKitchen.bind(this);
@@ -55,4 +55,4 @@ class ComponentFunctionsButton extends Component {
   }
 }
 
-export default ComponentFunctionsButton;
+export default ComponentVisualOptionRole;
