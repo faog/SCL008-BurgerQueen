@@ -3,22 +3,27 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import ComponentVisualButton from './componentVisualButton';
+import store from '../store';
 import './css/componentVisualMenuOptions.css';
 
 const menuFile = require('../data/menuBurgerQueen');
 
 class ComponentVisualMenuOptions extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.addProduct = this.addProduct.bind(this);
+    this.state = menuFile;
   }
 
   addProduct(product) {
-    this.props.onAddProduct(product);
+    store.dispatch({
+      type: 'ADD_TO_BILL',
+      product,
+    });
   }
 
   breakfast() {
-    const breakfastElement = menuFile.breakfast.map(product => (
+    const breakfastElement = this.state.breakfast.map(product => (
       <ComponentVisualButton
         name={product.product}
         buttonOnClick={(evt) => {
@@ -32,7 +37,7 @@ class ComponentVisualMenuOptions extends Component {
   }
 
   lunch() {
-    const lunchElement = menuFile.lunch.map(category => (
+    const lunchElement = this.state.lunch.map(category => (
       <div key={category.categoryName}>
         <h6>{category.categoryName}</h6>
         {category.items.map((menuItem, index) => (

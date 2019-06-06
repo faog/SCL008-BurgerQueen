@@ -4,14 +4,21 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import ComponentVisualButton from './componentVisualButton';
+import store from '../store';
 import './css/componentVisualBill.css';
 
 class ComponentVisualBill extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor() {
+    super();
     this.deleteProduct = this.deleteProduct.bind(this);
     this.totalValueProducts = this.totalValueProducts.bind(this);
-    this.state = { validated: false };
+    this.state = { validated: false, order: [] };
+
+    store.subscribe(() => {
+      this.setState({
+        order: store.getState().order,
+      });
+    });
   }
 
   handleSubmit(event) {
@@ -50,8 +57,8 @@ class ComponentVisualBill extends Component {
           <Form.Control.Feedback type="invalid">
             <p id="validation">Debe ingresar un nombre de cliente</p>
           </Form.Control.Feedback>
-          {this.props.products.map((product, index) => (
-            <div className="productsorder row border" key={index}>
+          {this.state.order.map(product => (
+            <div className="productsorder row border">
               <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
                 {' '}
@@ -67,8 +74,8 @@ class ComponentVisualBill extends Component {
                 variant="outline-danger"
                 size="sm"
                 name="X"
-                key={`btn ${index}`}
-                buttonOnClick={evt => this.deleteProduct(index, evt)}
+                key={`btn`}
+                buttonOnClick={evt => this.deleteProduct(evt)}
               />
             </div>
           ))}
