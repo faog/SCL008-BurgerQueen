@@ -2,79 +2,88 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+// import { connect } from 'react-redux';
 import ComponentVisualButton from './componentVisualButton';
-import store from '../store';
+// import { addProductToOrder } from '../redux/actions/orders';
+// import store from '../store';
 import './css/componentVisualMenuOptions.css';
 
 const menuFile = require('../data/menuBurgerQueen');
 
 class ComponentVisualMenuOptions extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.breakfast = this.breakfast.bind(this);
+    this.lunch = this.lunch.bind(this);
     this.addProduct = this.addProduct.bind(this);
-    this.state = menuFile;
+    this.state = ' ';
   }
 
   addProduct(product) {
-    store.dispatch({
-      type: 'ADD_TO_BILL',
-      product,
-    });
+    this.props.onAddProduct(product);
   }
 
   breakfast() {
-    const breakfastElement = this.state.breakfast.map(product => (
-      <ComponentVisualButton
-        name={product.product}
-        buttonOnClick={(evt) => {
-          this.addProduct(product, evt);
-        }}
-        className="breakfast"
-        key={product.product}
-      />
-    ));
-    return breakfastElement;
+    this.setState(() => {
+      const breakfastElement = menuFile.breakfast.map(product => (
+        <ComponentVisualButton
+          name={product.product}
+          buttonOnClick={(evt) => {
+            this.addProduct(product, evt);
+          }}
+          className="breakfast"
+          key={product.product}
+        />
+      ));
+      return { buttons: breakfastElement };
+    });
   }
 
   lunch() {
-    const lunchElement = this.state.lunch.map(category => (
-      <div key={category.categoryName}>
-        <h6>{category.categoryName}</h6>
-        {category.items.map((menuItem, index) => (
-          menuItem.size
-            ? (
-              <div key={menuItem.product}>
-                <p>{menuItem.product}</p>
-                {menuItem.size.map((size, sizeIndex) => (
-                  <ComponentVisualButton
-                    key={`${index}_${sizeIndex}`}
-                    name={size.product}
-                    className="lunch m-1"
-                    buttonOnClick={(evt) => { this.addProduct([menuItem, size], evt); }}
-                  />
-                ))}
-              </div>
-            )
-            : (
-              <ComponentVisualButton
-                key={index}
-                name={menuItem.product}
-                className="lunch m-1"
-                buttonOnClick={(evt) => { this.addProduct(menuItem, evt); }}
-              />
-            )
-        ))}
-      </div>
-    ));
-    return lunchElement;
+    this.setState(() => {
+      const lunchElement = menuFile.lunch.map(category => (
+        <div key={category.categoryName}>
+          <h6>{category.categoryName}</h6>
+          {category.items.map((menuItem, index) => (
+            menuItem.size
+              ? (
+                <div key={menuItem.product}>
+                  <p>{menuItem.product}</p>
+                  {menuItem.size.map((size, sizeIndex) => (
+                    <ComponentVisualButton
+                      key={`${index}_${sizeIndex}`}
+                      name={size.product}
+                      className="lunch m-1"
+                      buttonOnClick={(evt) => { this.addProduct([menuItem, size], evt); }}
+                    />
+                  ))}
+                </div>
+              )
+              : (
+                <ComponentVisualButton
+                  key={index}
+                  name={menuItem.product}
+                  className="lunch m-1"
+                  buttonOnClick={(evt) => { this.addProduct(menuItem, evt); }}
+                />
+              )
+          ))}
+        </div>
+      ));
+      return { buttons: lunchElement };
+    });
   }
 
   render() {
     return (
-      <div>
-        {this.props.menuname === 'Desayuno' ? this.breakfast() : ''}
-        {this.props.menuname === 'Resto del día' ? this.lunch() : ''}
-      </div>
+      <>
+        <h5>Ingrese la orden</h5>
+        <ComponentVisualButton name="Desayuno" className="btnbreakfast m-1" buttonOnClick={this.breakfast} />
+        <ComponentVisualButton name="Almuerzo/Cena" className="btnlunch-dinner m-1" buttonOnClick={this.lunch} />
+        <div id="menuoptions">
+          {this.state.buttons}
+        </div>
+      </>
     );
   }
 }
