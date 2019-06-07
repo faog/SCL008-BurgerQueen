@@ -2,7 +2,7 @@ import { ADD_TO_BILL } from '../actions/actionTypes';
 
 export default (
   state = {
-    order: [],
+    orders: [],
   },
   action,
 ) => {
@@ -10,7 +10,7 @@ export default (
     case ADD_TO_BILL:
       return {
         ...state,
-        order: state.order.concat(action.order),
+        orders: state.orders.concat(action.order),
       };
     default: return state;
   }
