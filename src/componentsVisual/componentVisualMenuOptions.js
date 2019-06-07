@@ -2,10 +2,9 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { addProductToOrder } from '../redux/actions/orders';
 import ComponentVisualButton from './componentVisualButton';
-// import { addProductToOrder } from '../redux/actions/orders';
-// import store from '../store';
 import './css/componentVisualMenuOptions.css';
 
 const menuFile = require('../data/menuBurgerQueen');
@@ -20,7 +19,7 @@ class ComponentVisualMenuOptions extends Component {
   }
 
   addProduct(product) {
-    this.props.onAddProduct(product);
+    this.props.addProduct(product);
   }
 
   breakfast() {
@@ -88,4 +87,15 @@ class ComponentVisualMenuOptions extends Component {
   }
 }
 
-export default ComponentVisualMenuOptions;
+const mapStateToProps = state => ({
+  ...state,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addProduct: addProductToOrder(dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ComponentVisualMenuOptions);

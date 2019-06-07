@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-// import store from '../store';
+import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import ComponentVisualButton from './componentVisualButton';
 import './css/componentVisualBill.css';
@@ -20,8 +20,8 @@ class ComponentVisualBill extends Component {
       <>
         <div>
           <h5>Resumen del Pedido</h5>
-          {this.state.order.map((product, index) => (
-            <div className="productsorder row border" key={index}>
+          {this.state.order.map(product => (
+            <div className="productsorder row border">
               <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
                 {' '}
@@ -37,7 +37,7 @@ class ComponentVisualBill extends Component {
                 variant="outline-danger"
                 size="sm"
                 name="X"
-                key={`btn ${index}`}
+                key="btn"
               />
             </div>
           ))}
@@ -51,4 +51,10 @@ class ComponentVisualBill extends Component {
   }
 }
 
-export default ComponentVisualBill;
+const mapStateToProps = state => ({
+  ...state,
+});
+
+export default connect(
+  mapStateToProps,
+)(ComponentVisualBill);
