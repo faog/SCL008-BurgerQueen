@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
@@ -8,19 +9,12 @@ import ComponentVisualButton from './componentVisualButton';
 import './css/componentVisualBill.css';
 
 class ComponentVisualBill extends Component {
-  constructor() {
-    super();
-    this.state = {
-      order: [],
-    };
-  }
-
   render() {
     return (
       <>
         <div>
           <h5>Resumen del Pedido</h5>
-          {this.state.order.map(product => (
+          {this.props.ordersFromStore.orders.map(product => (
             <div className="productsorder row border">
               <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
@@ -51,9 +45,9 @@ class ComponentVisualBill extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state,
-});
+const mapStateToProps = state =>
+  // ...state,
+  ({ ordersFromStore: state.orders });
 
 export default connect(
   mapStateToProps,
