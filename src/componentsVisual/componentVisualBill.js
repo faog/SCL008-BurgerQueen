@@ -5,17 +5,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
+import { deleteProductToOrder } from '../redux/actions/waiter';
 import ComponentVisualButton from './componentVisualButton';
 import './css/componentVisualBill.css';
 
 class ComponentVisualBill extends Component {
+  deleteProduct(index) {
+    this.props.deleteProduct(index);
+  }
+
   render() {
     return (
       <>
         <div>
           <h5>Resumen del Pedido</h5>
-          {this.props.ordersFromStore.orders.map(product => (
-            <div className="productsorder row border">
+          {this.props.ordersFromStore.orders.map((product, index) => (
+            <div className="productsorder row border" key={index}>
               <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
                 {' '}
@@ -31,7 +36,10 @@ class ComponentVisualBill extends Component {
                 variant="outline-danger"
                 size="sm"
                 name="X"
-                key="btn"
+                key={`btn ${index}`}
+                buttonOnClick={(evt) => {
+                  this.deleteProduct(index, evt);
+                }}
               />
             </div>
           ))}
@@ -45,10 +53,16 @@ class ComponentVisualBill extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  deleteProduct: deleteProductToOrder(dispatch),
+});
+
+
 const mapStateToProps = state =>
   // ...state,
   ({ ordersFromStore: state.orders });
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(ComponentVisualBill);
