@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addProductToOrder } from '../redux/actions/orders';
+import { addProductToOrder } from '../redux/actions/waiter';
 import ComponentVisualButton from './componentVisualButton';
 import './css/componentVisualMenuOptions.css';
 

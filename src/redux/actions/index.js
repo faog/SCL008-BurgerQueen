@@ -1,5 +1,5 @@
-import orders from './orders';
+import waiter from './waiter';
 
 export default {
-  orders,
+  waiter,
 };
