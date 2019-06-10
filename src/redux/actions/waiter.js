@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { ADD_TO_BILL, DELETE_TO_BILL } from './actionTypes';
+import { ADD_TO_BILL, DELETE_TO_BILL, CLEAN_TO_BILL } from './actionTypes';
 
 export const addProductToOrder = dispatch => (product) => {
   dispatch({
@@ -12,5 +12,12 @@ export const deleteProductToOrder = dispatch => (index) => {
   dispatch({
     type: DELETE_TO_BILL,
     index,
+  });
+};
+
+export const cleanProductToOrder = dispatch => (product) => {
+  dispatch({
+    type: CLEAN_TO_BILL,
+    order: product,
   });
 };

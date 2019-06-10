@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { ADD_TO_BILL, DELETE_TO_BILL } from '../actions/actionTypes';
+import { ADD_TO_BILL, DELETE_TO_BILL, CLEAN_TO_BILL } from '../actions/actionTypes';
 
 export default (
   state = {
@@ -30,6 +30,11 @@ export default (
           }
           return false;
         }),
+      };
+    case CLEAN_TO_BILL:
+      return {
+        ...state,
+        orders: [],
       };
     default: return state;
   }

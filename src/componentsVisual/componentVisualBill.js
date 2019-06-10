@@ -6,8 +6,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
-import { deleteProductToOrder } from '../redux/actions/waiter';
+import { deleteProductToOrder, cleanProductToOrder } from '../redux/actions/waiter';
 import ComponentVisualButton from './componentVisualButton';
 import ComponentVisualInput from './componentVisualInput';
 import './css/componentVisualBill.css';
@@ -18,6 +17,7 @@ class ComponentVisualBill extends Component {
     this.state = { error: 'Debe ingresar nombre del cliente' };
     this.validateName = this.validateName.bind(this);
     this.sendToKitchen = this.sendToKitchen.bind(this);
+    this.cleanProduct = this.cleanProduct.bind(this);
     this.totalValueProducts = this.totalValueProducts.bind(this);
     this.error = '';
   }
@@ -35,6 +35,10 @@ class ComponentVisualBill extends Component {
     }
     // Validaciones adicionales
     this.setState({ error: '' });
+  }
+
+  cleanProduct() {
+    this.props.cleanProduct();
   }
 
   sendToKitchen() {
@@ -89,8 +93,19 @@ class ComponentVisualBill extends Component {
           {this.totalValueProducts()}
         </p>
         <div className="btnkitchen row">
-          <ComponentVisualButton className="clean m-2" name="Limpiar" />
-          <Button type="submit">Enviar a cocina</Button>
+          <ComponentVisualButton
+            className="clean m-2"
+            buttonOnClick={(evt) => {
+              this.cleanProduct(evt);
+            }}
+            name="Limpiar"
+          />
+          <ComponentVisualButton
+            buttonOnClick={(evt) => {
+              this.sendToKitchen(evt);
+            }}
+            name="Enviar a Cocina"
+          />
         </div>
       </>
     );
@@ -99,6 +114,8 @@ class ComponentVisualBill extends Component {
 
 const mapDispatchToProps = dispatch => ({
   deleteProduct: deleteProductToOrder(dispatch),
+  sendToKitchen: cleanProductToOrder(dispatch),
+  cleanProduct: cleanProductToOrder(dispatch),
 });
 
 const mapStateToProps = state =>
