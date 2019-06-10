@@ -18,6 +18,7 @@ class ComponentVisualBill extends Component {
     this.state = { error: 'Debe ingresar nombre del cliente' };
     this.validateName = this.validateName.bind(this);
     this.sendToKitchen = this.sendToKitchen.bind(this);
+    this.totalValueProducts = this.totalValueProducts.bind(this);
     this.error = '';
   }
 
@@ -41,6 +42,14 @@ class ComponentVisualBill extends Component {
       alert('Pedido enviado a la cocina');
       // Agregar código de firebase
     }
+  }
+
+  totalValueProducts() {
+    let total = 0;
+    this.props.ordersFromStore.orders.forEach((product) => {
+      total += product.price;
+    });
+    return total;
   }
 
   render() {
@@ -74,6 +83,11 @@ class ComponentVisualBill extends Component {
             </div>
           ))}
         </div>
+        <p id="totalprice">
+        Total:$
+          {' '}
+          {this.totalValueProducts()}
+        </p>
         <div className="btnkitchen row">
           <ComponentVisualButton className="clean m-2" name="Limpiar" />
           <Button type="submit">Enviar a cocina</Button>
