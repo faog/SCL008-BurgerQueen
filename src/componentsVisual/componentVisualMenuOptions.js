@@ -2,9 +2,12 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import ReactDOM from 'react-dom';
+import { connect, Provider } from 'react-redux';
+import store from '../redux/store';
 import { addProductToOrder } from '../redux/actions/waiter';
 import ComponentVisualButton from './componentVisualButton';
+import ComponentVisualModal from './componentVisualModal';
 import './css/componentVisualMenuOptions.css';
 
 const menuFile = require('../data/menuBurgerQueen');
@@ -16,10 +19,28 @@ class ComponentVisualMenuOptions extends Component {
     this.lunch = this.lunch.bind(this);
     this.addProduct = this.addProduct.bind(this);
     this.state = ' ';
+    this.modalRef = React.createRef();
   }
 
   addProduct(product) {
-    this.props.addProduct(product);
+    if (Array.isArray(product) && product[0].types) {
+      ReactDOM.render(
+        <Provider store={store}>
+          <ComponentVisualModal
+            types={product[0].types}
+            toppings={product[0].toppings}
+            product={product[0].product}
+            subproduct={product[1].product}
+            price={product[1].price}
+            ref={this.modalRef}
+          />
+        </Provider>,
+        document.getElementById('modaldiv'),
+      );
+      this.modalRef.current.handleShow();
+    } else {
+      this.props.addProduct(product);
+    }
   }
 
   breakfast() {
