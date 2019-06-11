@@ -43,8 +43,11 @@ class ComponentVisualBill extends Component {
 
   sendToKitchen() {
     if (this.state.error === '') {
-      alert('Pedido enviado a la cocina');
-      // Agregar código de firebase
+      this.props.firebase.sendToKitchen(this.props.ordersFromStore.orders).then(() => {
+        alert('Pedido enviado a la cocina');
+      }).catch((error) => {
+        alert(`Error: ${error}`);
+      });
     }
   }
 

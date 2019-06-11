@@ -15,7 +15,7 @@ class TemplateWaiter extends Component {
           <ComponentVisualMenuOptions />
         </section>
         <section className="col-sm">
-          <ComponentVisualBill />
+          <ComponentVisualBill firebase={this.props.firebase} />
         </section>
       </div>
     );
