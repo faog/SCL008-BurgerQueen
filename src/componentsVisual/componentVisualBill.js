@@ -1,56 +1,81 @@
+/* eslint-disable no-alert */
+/* eslint-disable react/no-unused-state */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { deleteProductToOrder, cleanProductToOrder } from '../redux/actions/waiter';
 import ComponentVisualButton from './componentVisualButton';
+import ComponentVisualInput from './componentVisualInput';
 import './css/componentVisualBill.css';
 
 class ComponentVisualBill extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.deleteProduct = this.deleteProduct.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = { error: 'Debe ingresar nombre del cliente', customerName: '' };
+    this.validateName = this.validateName.bind(this);
+    this.sendToKitchen = this.sendToKitchen.bind(this);
+    this.cleanProduct = this.cleanProduct.bind(this);
     this.totalValueProducts = this.totalValueProducts.bind(this);
-    this.state = { validated: false };
-  }
-
-  handleSubmit(event) {
-    // Obtenemos el formulario a partir del evento
-    const form = event.currentTarget;
-    // Prevenir el submit
-    event.preventDefault();
-    event.stopPropagation();
-    // Si el formulario pasa las validaciones, se guarda la comanda en Firebase
-    if (form.checkValidity() === true) {
-      this.props.onSaveBill();
-    }
-    // Habilita el despliegue de los mensajes de error
-    this.setState({ validated: true });
+    this.error = '';
   }
 
   deleteProduct(index) {
-    this.props.onDeleteProduct(index);
+    this.props.deleteProduct(index);
+  }
+
+  validateName(evt) {
+    // Al momento de validar, debe cambiar el error.
+    // evt.target.value corresponde al valor en la caja de texto
+    if (evt.target.value === '') {
+      this.setState({ error: 'Debe ingresar nombre del cliente' });
+      return;
+    }
+    // Validaciones adicionales
+    // Al suceder las validaciones, guardo el nombre del cliente
+    this.setState({ error: '', customerName: evt.target.value });
+  }
+
+  cleanProduct() {
+    this.props.cleanProduct();
+    // Limpiar el input con el nombre del cliente
+    this.setState({ error: 'Debe ingresar el nombre del cliente', customerName: '' });
+  }
+
+  sendToKitchen() {
+    if (this.props.ordersFromStore.orders.length === 0) {
+      alert('No hay pedidos en la orden');
+      return;
+    }
+
+    if (this.state.error === '') {
+      this.props.firebase.sendToKitchen(this.props.ordersFromStore.orders,
+        this.state.customerName).then(() => {
+        alert('Pedido enviado a la cocina');
+        this.cleanProduct();
+      }).catch((error) => {
+        alert(`Error: ${error}`);
+      });
+    }
   }
 
   totalValueProducts() {
     let total = 0;
-    this.props.products.forEach((product) => {
+    this.props.ordersFromStore.orders.forEach((product) => {
       total += product.price;
     });
     return total;
   }
 
   render() {
-    const { validated } = this.state;
     return (
-      <Form className="order row" noValidate validated={validated} onSubmit={evt => this.handleSubmit(evt)}>
+      <>
         <div>
-          <Form.Label>Nombre cliente:</Form.Label>
-          <Form.Control required id="customername" className="customername" name="customername" placeholder="Ingrese el nombre del cliente" />
-          <Form.Control.Feedback type="invalid">
-            <p id="validation">Debe ingresar un nombre de cliente</p>
-          </Form.Control.Feedback>
-          {this.props.products.map((product, index) => (
+          <h5>Resumen del Pedido</h5>
+          <ComponentVisualInput message="Nombre:" validate={this.validateName} error={this.state.error} text={this.state.customerName} />
+          {this.props.ordersFromStore.orders.map((product, index) => (
             <div className="productsorder row border" key={index}>
               <div className="productorder col-md-10 align-middle mb-2">
                 {product.product}
@@ -68,7 +93,9 @@ class ComponentVisualBill extends Component {
                 size="sm"
                 name="X"
                 key={`btn ${index}`}
-                buttonOnClick={evt => this.deleteProduct(index, evt)}
+                buttonOnClick={(evt) => {
+                  this.deleteProduct(index, evt);
+                }}
               />
             </div>
           ))}
@@ -79,12 +106,35 @@ class ComponentVisualBill extends Component {
           {this.totalValueProducts()}
         </p>
         <div className="btnkitchen row">
-          <ComponentVisualButton className="clean m-2" buttonOnClick={this.props.onClearBill} name="Limpiar" />
-          <Button type="submit">Enviar a cocina</Button>
+          <ComponentVisualButton
+            className="clean m-2"
+            buttonOnClick={(evt) => {
+              this.cleanProduct(evt);
+            }}
+            name="Limpiar"
+          />
+          <ComponentVisualButton
+            buttonOnClick={(evt) => {
+              this.sendToKitchen(evt);
+            }}
+            name="Enviar a Cocina"
+          />
         </div>
-      </Form>
+      </>
     );
   }
 }
 
-export default ComponentVisualBill;
+const mapDispatchToProps = dispatch => ({
+  deleteProduct: deleteProductToOrder(dispatch),
+  sendToKitchen: cleanProductToOrder(dispatch),
+  cleanProduct: cleanProductToOrder(dispatch),
+});
+
+const mapStateToProps = state =>
+  ({ ordersFromStore: state.orders });
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ComponentVisualBill);

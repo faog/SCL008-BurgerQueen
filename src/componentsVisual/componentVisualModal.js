@@ -3,9 +3,11 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/sort-comp */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Button, Modal, ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
+import { addProductToOrder } from '../redux/actions/waiter';
 import './css/componentVisualModal.css';
 
 class ComponentVisualModal extends Component {
@@ -40,7 +42,7 @@ class ComponentVisualModal extends Component {
       show: false,
     });
     if (this.state.product.product) {
-      this.props.onAddToBill(this.state.product);
+      this.props.addProduct(this.state.product);
     }
   }
 
@@ -150,4 +152,15 @@ class ComponentVisualModal extends Component {
   }
 }
 
-export default ComponentVisualModal;
+const mapDispatchToProps = dispatch => ({
+  addProduct: addProductToOrder(dispatch),
+});
+
+const mapStateToProps = state => ({ ordersFromStore: state.orders });
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { forwardRef: true },
+)(ComponentVisualModal);

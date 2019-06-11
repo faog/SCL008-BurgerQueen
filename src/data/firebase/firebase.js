@@ -13,19 +13,20 @@ const config = {
 };
 
 // Crear clase Firebase, que permite guardar la información del pedido
-// (nombre del usuario, pedio, fecha de ingreso)
+// (nombre del usuario, pedido, fecha de ingreso)
 class Firebase {
   constructor() {
     app.initializeApp(config);
     this.db = app.firestore();
   }
 
-    saveBill = (bill, customername) => {
-      const billObject = {};
-      billObject.customername = customername;
-      billObject.bill = bill;
-      billObject.timeEnterOrder = new Date(Date.now());
-      return this.db.collection('kitchen').add(billObject);
+    sendToKitchen = (order, customername) => {
+      const ordersObject = {};
+      ordersObject.customername = customername;
+      ordersObject.order = order;
+      ordersObject.timeEnterOrder = new Date(Date.now());
+      ordersObject.state = 'Pendiente';
+      return this.db.collection('kitchen').add(ordersObject);
     }
 }
 

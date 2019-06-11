@@ -21,12 +21,10 @@ class ComponentVisualOptionRole extends Component {
   }
 
   containerWaiter() {
-    // ReactDOM.render(<TemplateWaiter />, document.getElementById('containerrole'));
     this.setState({ function: 'waiter' });
   }
 
   containerKitchen() {
-    // ReactDOM.render(<TemplateKitchen />, document.getElementById('containerrole'));
     this.setState({ function: 'kitchen' });
   }
 
