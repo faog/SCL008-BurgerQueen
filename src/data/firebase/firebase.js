@@ -20,10 +20,12 @@ class Firebase {
     this.db = app.firestore();
   }
 
-    sendToKitchen = (order) => {
+    sendToKitchen = (order, customername) => {
       const ordersObject = {};
+      ordersObject.customername = customername;
       ordersObject.order = order;
       ordersObject.timeEnterOrder = new Date(Date.now());
+      ordersObject.state = 'Pendiente';
       return this.db.collection('kitchen').add(ordersObject);
     }
 }

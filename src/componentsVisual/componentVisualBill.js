@@ -14,7 +14,7 @@ import './css/componentVisualBill.css';
 class ComponentVisualBill extends Component {
   constructor(props) {
     super(props);
-    this.state = { error: 'Debe ingresar nombre del cliente' };
+    this.state = { error: 'Debe ingresar nombre del cliente', customerName: '' };
     this.validateName = this.validateName.bind(this);
     this.sendToKitchen = this.sendToKitchen.bind(this);
     this.cleanProduct = this.cleanProduct.bind(this);
@@ -34,17 +34,27 @@ class ComponentVisualBill extends Component {
       return;
     }
     // Validaciones adicionales
-    this.setState({ error: '' });
+    // Al suceder las validaciones, guardo el nombre del cliente
+    this.setState({ error: '', customerName: evt.target.value });
   }
 
   cleanProduct() {
     this.props.cleanProduct();
+    // Limpiar el input con el nombre del cliente
+    this.setState({ error: 'Debe ingresar el nombre del cliente', customerName: '' });
   }
 
   sendToKitchen() {
+    if (this.props.ordersFromStore.orders.length === 0) {
+      alert('No hay pedidos en la orden');
+      return;
+    }
+
     if (this.state.error === '') {
-      this.props.firebase.sendToKitchen(this.props.ordersFromStore.orders).then(() => {
+      this.props.firebase.sendToKitchen(this.props.ordersFromStore.orders,
+        this.state.customerName).then(() => {
         alert('Pedido enviado a la cocina');
+        this.cleanProduct();
       }).catch((error) => {
         alert(`Error: ${error}`);
       });
@@ -64,7 +74,7 @@ class ComponentVisualBill extends Component {
       <>
         <div>
           <h5>Resumen del Pedido</h5>
-          <ComponentVisualInput message="Nombre:" validate={this.validateName} error={this.state.error} />
+          <ComponentVisualInput message="Nombre:" validate={this.validateName} error={this.state.error} text={this.state.customerName} />
           {this.props.ordersFromStore.orders.map((product, index) => (
             <div className="productsorder row border" key={index}>
               <div className="productorder col-md-10 align-middle mb-2">
