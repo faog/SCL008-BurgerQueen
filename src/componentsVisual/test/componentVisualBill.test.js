@@ -12,14 +12,17 @@ import ComponentVisualBill from '../componentVisualBill';
 
 configure({ adapter: new Adapter() });
 
-describe('ComponentVisualBill', () => {
+window.alert = jest.fn();
+
+describe('ComponentVisualBill', () => {  
   it('Debería existir el componente <ComponentVisualBill />', () => {
     const bill = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
-    expect(bill.exists()).toBe(true);
+    expect(bill.exists()).toBe(true);    
   });
 
   it('Debería eliminar el producto del pedido', () => {
     const btndelete = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
+    console.log(btndelete.find('.productdelete'));
     btndelete.find('.productdelete').find('.btn').simulate('click');
     expect(btndelete.state.index);
   });
@@ -34,5 +37,6 @@ describe('ComponentVisualBill', () => {
     const send = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
     send.find('.send').find('.btn').simulate('click');
     expect(send.state.ordersFromStore);
+    window.alert.mockClear();
   });
 });

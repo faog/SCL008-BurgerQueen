@@ -4,7 +4,7 @@ import * as types from '../actionTypes';
 
 describe('actions', () => {
   it('Crear la acción de agregar un producto ', () => {
-    const product = 'ADD_TO_BILL';
+    const product = 'product';
     const expectedAction = {
       type: types.ADD_TO_BILL,
       product,
