@@ -18,7 +18,7 @@ class ComponentVisualMenuOptions extends Component {
     this.breakfast = this.breakfast.bind(this);
     this.lunch = this.lunch.bind(this);
     this.addProduct = this.addProduct.bind(this);
-    this.state = ' ';
+    this.state = {};
     this.modalRef = React.createRef();
   }
 

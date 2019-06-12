@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { configure, shallow } from 'enzyme';
-import { Form } from 'react-bootstrap';
+import { Form, Alert } from 'react-bootstrap';
 import Adapter from 'enzyme-adapter-react-16';
 import ComponentVisualInput from '../componentVisualInput';
 
@@ -17,14 +17,27 @@ describe('ComponentVisualInput', () => {
 
   it('debería llamar a onChange al ingresar un texto en el input', () => {
     const mockFn = jest.fn();
-    const input = shallow(<Form.Control
+    const input = shallow(<ComponentVisualInput
       value=""
-      onChange={mockFn}
+      validate={mockFn}
     />);
 
     input
-      .find('input')
+      .find(Form.Control)
       .simulate('change', 'matched');
     expect(mockFn.mock.calls[0][0]).toBe('matched');
+  });
+
+  it('debería mostrar un alert cuando se valida un error', () => {
+    const input = shallow(<ComponentVisualInput
+      value=""
+      error="Error"
+    />);
+    expect(input.find(Alert).exists()).toBe(true);
+    const inputNoError = shallow(<ComponentVisualInput
+      value=""
+      error=""
+    />);
+    expect(inputNoError.find(Alert).exists()).toBe(false);
   });
 });
