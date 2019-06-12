@@ -114,6 +114,7 @@ class ComponentVisualBill extends Component {
             name="Limpiar"
           />
           <ComponentVisualButton
+            className="send m-2"
             buttonOnClick={(evt) => {
               this.sendToKitchen(evt);
             }}
