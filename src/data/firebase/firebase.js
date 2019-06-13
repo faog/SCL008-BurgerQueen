@@ -28,6 +28,29 @@ class Firebase {
       ordersObject.state = 'Pendiente';
       return this.db.collection('kitchen').add(ordersObject);
     }
+
+    getOrdersByState = state => new Promise((resolve, reject) => {
+      // ordenes pendientes
+      this.db.collection('kitchen').where('state', '==', state).orderBy('timeEnterOrder', 'desc').get()
+        .then((querySnapshot) => {
+          const orders = [];
+          querySnapshot.forEach((order) => {
+            const data = order.data();
+            // Se añade para poder usarlo como llave, tanto para el map como para el borrado
+            data.id = order.id;
+            orders.push(data);
+          });
+          resolve(orders);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    })
+
+    completeOrder = orderId => this.db.collection('kitchen').doc(orderId).update({
+      state: 'Completa',
+      timeCompleteOrder: new Date(Date.now()),
+    })
 }
 
 export default Firebase;
