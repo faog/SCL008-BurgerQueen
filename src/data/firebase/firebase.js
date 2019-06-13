@@ -51,6 +51,11 @@ class Firebase {
       state: 'Completa',
       timeCompleteOrder: new Date(Date.now()),
     })
+
+    deliverOrder = orderId => this.db.collection('kitchen').doc(orderId).update({
+      state: 'Entregada',
+      timeDeliveredOrder: new Date(Date.now()),
+    })
 }
 
 export default Firebase;
