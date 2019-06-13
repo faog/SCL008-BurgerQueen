@@ -7,6 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import ComponentVisualButton from './componentVisualButton';
 import TemplateWaiter from '../template/templateWaiter';
 import TemplateKitchen from '../template/templateKitchen';
+import TemplateDelivery from '../template/templateDelivery';
 import { FirebaseContext } from '../data/firebase';
 import './css/componentVisualOptionRole.css';
 
@@ -17,6 +18,7 @@ class ComponentVisualOptionRole extends Component {
     super(props, context);
     this.containerKitchen = this.containerKitchen.bind(this);
     this.containerWaiter = this.containerWaiter.bind(this);
+    this.containerDelivery = this.containerDelivery.bind(this);
     this.state = { function: '' };
   }
 
@@ -28,12 +30,17 @@ class ComponentVisualOptionRole extends Component {
     this.setState({ function: 'kitchen' });
   }
 
+  containerDelivery() {
+    this.setState({ function: 'delivery' });
+  }
+
   render() {
     return (
       <>
         <div className="roleoption">
           <ComponentVisualButton name="Mesero" className="btnnavbar m-2" buttonOnClick={this.containerWaiter} />
           <ComponentVisualButton name="Cocina" className="btnnavbar m-2" buttonOnClick={this.containerKitchen} />
+          <ComponentVisualButton name="Entrega" className="btnnavbar m-2" buttonOnClick={this.containerDelivery} />
 
         </div>
         <div id="containerrole">
@@ -44,6 +51,9 @@ class ComponentVisualOptionRole extends Component {
               }
               if (this.state.function === 'waiter') {
                 return <TemplateWaiter firebase={firebase} />;
+              }
+              if (this.state.function === 'delivery') {
+                return <TemplateDelivery firebase={firebase} />;
               }
             }}
           </FirebaseContext.Consumer>
