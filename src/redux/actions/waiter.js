@@ -6,12 +6,10 @@ export const addProductToOrder = product => ({
   order: product,
 });
 
-export const deleteProductToOrder = dispatch => (index) => {
-  dispatch({
-    type: DELETE_TO_BILL,
-    index,
-  });
-};
+export const deleteProductToOrder = index => ({
+  type: DELETE_TO_BILL,
+  index,
+});
 
 export const cleanProductToOrder = dispatch => (product) => {
   dispatch({
