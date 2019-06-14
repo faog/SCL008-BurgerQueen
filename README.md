@@ -18,12 +18,12 @@ Yo como mesero o mesera debería poder tomar la orden de un cliente para saber f
 
 **Criterio de terminado**: Para realizar la historia de usuario N°1 voy a :
 
-  * Anotar nombre de cliente
-  * Agregar productos al pedido
-  * Eliminar productos
-  * Ver resumen y el total de la compra
-  * Enviar pedido a cocina (guardar en alguna base de datos)
-  * Se ve y funciona bien en una tablet
+  * Anotar nombre de cliente.
+  * Agregar productos al pedido.
+  * Eliminar productos.
+  * Ver resumen y el total de la compra.
+  * Enviar pedido a cocina (guardar en alguna base de datos).
+  * Se ve y funciona bien en una tablet.
 
 #### HU2: Jefe de cocina debe poder ver ordenes
 Yo como cocinero o cocinera debería poder ver las órdenes de los clientes y marcar cuales están listas para saber qué se debe cocinar y avisar al mesero que una orden está lista.
