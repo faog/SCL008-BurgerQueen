@@ -6,6 +6,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import ComponentVisualButton from './componentVisualButton';
+import './css/componentVisualOrder.css';
 
 class ComponentVisualOrder extends Component {
   constructor(props, context) {
@@ -35,33 +36,39 @@ class ComponentVisualOrder extends Component {
       <>
         {
         this.state.orders.map(order => (
-          <div key={order.id}>
-            <div className="row">
+          <div className="boxorder" key={order.id}>
+            <div className="boxelement">
+              <div className="row">
             Cliente:
-              {' '}
-              {order.customername}
-            </div>
-            <div className="row">Productos:</div>
-            {order.order.map((product, index) => (
-              <div key={index}>
-                {product.product}
                 {' '}
-                $
-                {product.price}
+                {order.customername}
               </div>
-            ))}
-            <div className="row">
+              <div className="row">Productos:</div>
+              {order.order.map((product, index) => (
+                <div className="boxproduct" key={index}>
+                  {product.product}
+                  {' '}
+                $
+                  {product.price}
+                </div>
+              ))}
+              <div className="row">
               Hora de ingreso:
-              {' '}
-              {order.timeEnterOrder.toDate().toLocaleDateString()}
-              {' '}
-              {order.timeEnterOrder.toDate().toLocaleTimeString()}
+                {' '}
+                {order.timeEnterOrder.toDate().toLocaleDateString()}
+                {' '}
+                {order.timeEnterOrder.toDate().toLocaleTimeString()}
+              </div>
             </div>
-            <ComponentVisualButton
-              name={this.props.buttonName}
-              buttonOnClick={evt => this.completeOrder(order.id, this.props.state, evt)}
-              key={order.id}
-            />
+            <div className="boxbutton">
+              <ComponentVisualButton
+                name={this.props.buttonName}
+                buttonOnClick={evt => this.completeOrder(order.id, this.props.state, evt)}
+                key={order.id}
+                className="btnstate"
+              />
+            </div>
+
           </div>
         ))
       }

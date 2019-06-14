@@ -6,13 +6,14 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import ComponentVisualOrder from '../componentsVisual/componentVisualOrder';
+import './css/templateKitchen.css';
 
 class TemplateKitchen extends Component {
   render() {
     return (
       <>
-        <h1>Pedidos a realizar</h1>
-        <ComponentVisualOrder buttonName="Completar" state="Pendiente" firebase={this.props.firebase} />
+        <h3>Pedidos a realizar</h3>
+        <ComponentVisualOrder buttonName="Completar pedido" state="Pendiente" firebase={this.props.firebase} />
       </>
     );
   }
