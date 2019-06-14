@@ -113,7 +113,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addProduct: addProductToOrder(dispatch),
+  addProduct: product => dispatch(addProductToOrder(product)),
 });
 
 export default connect(
