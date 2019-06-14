@@ -11,8 +11,8 @@ class TemplateDelivery extends Component {
   render() {
     return (
       <>
-        <h1>Pedidos listos para entregar</h1>
-        <ComponentVisualOrder buttonName="Entregar" state="Entregar" newState="Entregado" firebase={this.props.firebase} />
+        <h3>Pedidos listos para entregar</h3>
+        <ComponentVisualOrder buttonName="Entregar pedido" state="Entregar" newState="Entregado" firebase={this.props.firebase} />
       </>
     );
   }
