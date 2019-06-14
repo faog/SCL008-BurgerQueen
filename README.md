@@ -11,15 +11,10 @@ La planificación fue realizada en trello, la cual puedes revisar [aquí](https:
 
 ### Definición del producto
 
-El product owner del proyecto ha conversado con el cliente y luego de una
-reunión con el project manager han logrado crear el siguiente backlog:
-
 A partir de la información obtenida del product owner, nacen 3 historias de usuario que describen las necesidades de los usuarios, buscando cubrirlas a partir de los criterios de terminado y los criterios de aceptación que se desarrollan en cada una de ellas.
 
 #### [Historia de usuario 1] Mesero/a debe poder tomar orden de una persona
-Yo como mesero o mesera debería poder tomar la orden de un cliente para saber
-fácilmente cuanto cobrar y que la cocina tenga las órdenes de manera inmediata
-y según cuando van llegando.
+Yo como mesero o mesera debería poder tomar la orden de un cliente para saber fácilmente cuanto cobrar y que la cocina tenga las órdenes de manera inmediata y según cuando van llegando.
 
 **Criterio de terminado**: Para realizar la historia de usuario N°1 voy a :
 
@@ -31,9 +26,7 @@ y según cuando van llegando.
   * Se ve y funciona bien en una tablet
 
 #### [Historia de usuario 2] Jefe de cocina debe poder ver ordenes
-Yo como cocinero o cocinera debería poder ver las órdenes de los clientes y
-marcar cuales están listas para saber qué se debe cocinar y avisar al mesero
-que una orden está lista.
+Yo como cocinero o cocinera debería poder ver las órdenes de los clientes y marcar cuales están listas para saber qué se debe cocinar y avisar al mesero que una orden está lista.
 
 ##### Definición de terminado
   * Ver los pedidos ordenados según van llegando
@@ -41,9 +34,7 @@ que una orden está lista.
   * Ver el tiempo que tomó el pedido
 
 #### [Historia de usuario 3] Mesero/a debe poder ver órdenes listas para servir para entregarlas a los clientes
-Yo como mesero o mesera debería poder ver las órdenes que han sido cocinadas y
-están listas para servir a los clientes, para así entregarlas y que el cliente
-se vaya feliz con su comida.
+Yo como mesero o mesera debería poder ver las órdenes que han sido cocinadas y están listas para servir a los clientes, para así entregarlas y que el cliente se vaya feliz con su comida.
 
 #### Definición de terminado
   * Ver listado de órdenes terminadas
@@ -52,10 +43,10 @@ se vaya feliz con su comida.
 Los criterios de aceptación son iguales para las tres historias, siendo los siguientes:
 
 ##### Criterios de aceptación
-  * Recibir code review de al menos una compañera
-  * Hiciste tests de usabilidad e incorporar el feedback del mesero o mesera
-  * Haces test unitarios y has testeado tu producto por tu cuenta
-  * Desplegar la aplicación y etiquetar la versión desplegada (git tag)
+  * Recibir code review de al menos una compañera.
+  * Hiciste tests de usabilidad e incorporar el feedback del mesero o mesera.
+  * Haces test unitarios y has testeado tu producto por tu cuenta.
+  * Desplegar la aplicación y etiquetar la versión desplegada (git tag).
 
 ## Prototipo 
 Una vez reconocido el usuario, comienza el proceso creativo de prototipo de baja fidelidad, destacando las principales vistas:
@@ -68,7 +59,7 @@ Una vez reconocido el usuario, comienza el proceso creativo de prototipo de baja
 
 **Ejecución del interfaz de usuario HTML, CSS, JS**
 
-* La lógica del proyecto fue implementada usando HTML, CSS (usando como framework [React-Bootstrap](https://react-bootstrap.github.io/) y la librería [React](https://getbootstrap.com/).
+* La lógica del proyecto fue implementada usando HTML, CSS (usando como framework [React-Bootstrap](https://react-bootstrap.github.io/) y la librería de javascript [React](https://getbootstrap.com/).
 
 **Implementación de la interfaz**
 
@@ -82,8 +73,6 @@ como plataforma de desarrollo, para poder registrar los pedidos realizados y act
 * Testeo de [usabilidad](https://www.loom.com/share/368a922aa7b249218b61af988a4d54bd) y code review.
 * Trabajo respadado mediante el uso de Git y GitHub :octocat:, realizando realeses por historia de usuarios.
 * Deploy con gh-pages de la aplicación [Burger Queen](https://faog.github.io/SCL008-BurgerQueen/)
-
- 
 
 ### Futuras mejoras ⌨️
 
