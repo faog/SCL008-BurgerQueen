@@ -14,12 +14,12 @@ configure({ adapter: new Adapter() });
 
 window.alert = jest.fn();
 
-describe('ComponentVisualBill', () => {  
+describe('ComponentVisualBill', () => {
   it('Debería existir el componente <ComponentVisualBill />', () => {
     const bill = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
-    expect(bill.exists()).toBe(true);    
+    expect(bill.exists()).toBe(true);
   });
- /*
+  /*
   it('Debería eliminar el producto del pedido', () => {
     const btndelete = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
     console.log(btndelete.find('.productdelete'));
