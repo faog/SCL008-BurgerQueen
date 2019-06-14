@@ -29,6 +29,7 @@ class Firebase {
       return this.db.collection('kitchen').add(ordersObject);
     }
 
+    // Creo una nueva promesa, que me permita procesar toda la información antes de mostrarla
     getOrdersByState = state => new Promise((resolve, reject) => {
       // ordenes pendientes
       this.db.collection('kitchen').where('state', '==', state).orderBy('timeEnterOrder', 'desc').get()
