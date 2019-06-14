@@ -48,8 +48,8 @@ class Firebase {
         });
     })
 
-    completeOrder = orderId => this.db.collection('kitchen').doc(orderId).update({
-      state: 'Completa',
+    orderChangeState = (orderId, newState) => this.db.collection('kitchen').doc(orderId).update({
+      state: newState,
       timeCompleteOrder: new Date(Date.now()),
     })
 }
