@@ -12,7 +12,7 @@ class TemplateKitchen extends Component {
     return (
       <>
         <h1>Pedidos a realizar</h1>
-        <ComponentVisualOrder buttonName="Completar" state="Pendiente" firebase={this.props.firebase} />
+        <ComponentVisualOrder buttonName="Completar" state="Pendiente" newState="Entregar" firebase={this.props.firebase} />
       </>
     );
   }

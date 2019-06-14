@@ -10,18 +10,18 @@ import ComponentVisualButton from './componentVisualButton';
 class ComponentVisualOrder extends Component {
   constructor(props, context) {
     super(props);
-    this.completeOrder = this.completeOrder.bind(this);
+    this.changeStateOrder = this.changeStateOrder.bind(this);
     this.state = {
       orders: [],
     };
   }
 
-  completeOrder(orderId, state) {
+  changeStateOrder(orderId) {
     console.log(`Completando orden ${orderId}`);
-    this.props.firebase.completeOrder(orderId)
+    this.props.firebase.orderChangeState(orderId, this.props.newState)
       .then(() => {
       // Traer nuevamente los datos
-        this.props.firebase.getOrdersByState(state)
+        this.props.firebase.getOrdersByState(this.props.state)
           .then((orders) => {
             this.setState({ orders });
           });
@@ -59,7 +59,7 @@ class ComponentVisualOrder extends Component {
             </div>
             <ComponentVisualButton
               name={this.props.buttonName}
-              buttonOnClick={evt => this.completeOrder(order.id, this.props.state, evt)}
+              buttonOnClick={evt => this.changeStateOrder(order.id, this.props.state, evt)}
               key={order.id}
             />
           </div>
@@ -71,7 +71,7 @@ class ComponentVisualOrder extends Component {
 
   // Luego que termina de crearse el componente, se deben rescatar los datos desde firebase
   componentDidMount() {
-    this.props.firebase.getOrdersByState('Pendiente').then((orders) => {
+    this.props.firebase.getOrdersByState(this.props.state).then((orders) => {
       this.setState({ orders });
     });
   }
