@@ -78,7 +78,7 @@ como plataforma de desarrollo, para poder registrar los pedidos realizados y act
 ### Futuras mejoras ⌨️
 
 * Implementar react router.
-* Aumentar la covertura de testing.
+* Aumentar la cobertura de testing.
 
 ### Autora 📌
 
