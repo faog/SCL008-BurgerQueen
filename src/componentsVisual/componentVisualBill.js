@@ -30,12 +30,12 @@ class ComponentVisualBill extends Component {
     // Al momento de validar, debe cambiar el error.
     // evt.target.value corresponde al valor en la caja de texto
     if (evt.target.value === '') {
-      this.setState({ error: 'Debe ingresar nombre del cliente' });
-      return;
-    }
+      this.setState({ error: 'Debe ingresar nombre del cliente', customerName: evt.target.value });
+    } else {
     // Validaciones adicionales
     // Al suceder las validaciones, guardo el nombre del cliente
-    this.setState({ error: '', customerName: evt.target.value });
+      this.setState({ error: '', customerName: evt.target.value });
+    }
   }
 
   cleanProduct() {
@@ -114,6 +114,7 @@ class ComponentVisualBill extends Component {
             name="Limpiar"
           />
           <ComponentVisualButton
+            className="send m-2"
             buttonOnClick={(evt) => {
               this.sendToKitchen(evt);
             }}
@@ -126,7 +127,7 @@ class ComponentVisualBill extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  deleteProduct: deleteProductToOrder(dispatch),
+  deleteProduct: index => dispatch(deleteProductToOrder(index)),
   sendToKitchen: cleanProductToOrder(dispatch),
   cleanProduct: cleanProductToOrder(dispatch),
 });

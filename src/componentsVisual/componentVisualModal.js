@@ -153,7 +153,7 @@ class ComponentVisualModal extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addProduct: addProductToOrder(dispatch),
+  addProduct: product => dispatch(addProductToOrder(product)),
 });
 
 const mapStateToProps = state => ({ ordersFromStore: state.orders });
