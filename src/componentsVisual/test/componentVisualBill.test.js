@@ -19,13 +19,14 @@ describe('ComponentVisualBill', () => {
     const bill = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
     expect(bill.exists()).toBe(true);    
   });
-
+ /*
   it('Debería eliminar el producto del pedido', () => {
     const btndelete = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
     console.log(btndelete.find('.productdelete'));
     btndelete.find('.productdelete').find('.btn').simulate('click');
     expect(btndelete.state.index);
   });
+  */
 
   it('Debería limpiar el pedido', () => {
     const clean = mount(<Provider store={store}><ComponentVisualBill /></Provider>);
