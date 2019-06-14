@@ -48,6 +48,12 @@ class ComponentVisualOrder extends Component {
                 <div className="boxproduct" key={index}>
                   {product.product}
                   {' '}
+                  {product.size}
+                  {' '}
+                  {product.type}
+                  {' '}
+                  {product.topping}
+                  {' '}
                 $
                   {product.price}
                 </div>
