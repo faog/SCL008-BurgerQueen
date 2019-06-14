@@ -127,7 +127,7 @@ class ComponentVisualBill extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  deleteProduct: deleteProductToOrder(dispatch),
+  deleteProduct: index => dispatch(deleteProductToOrder(index)),
   sendToKitchen: cleanProductToOrder(dispatch),
   cleanProduct: cleanProductToOrder(dispatch),
 });
