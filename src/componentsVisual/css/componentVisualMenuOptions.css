@@ -1,4 +1,6 @@
 .breakfast {
+    display: block;
+    margin-left:10px;
     width: 240px;
     height: 50px;
     font-size:18px;
