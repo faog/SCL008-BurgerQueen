@@ -38,9 +38,9 @@ class ComponentVisualOptionRole extends Component {
     return (
       <>
         <div className="roleoption">
-          <ComponentVisualButton name="Mesero" className="btnnavbar m-2" buttonOnClick={this.containerWaiter} />
-          <ComponentVisualButton name="Cocina" className="btnnavbar m-2" buttonOnClick={this.containerKitchen} />
-          <ComponentVisualButton name="Entrega" className="btnnavbar m-2" buttonOnClick={this.containerDelivery} />
+          <ComponentVisualButton name="Mesero" className="btnnavbar m-2" id="btn-waiter" buttonOnClick={this.containerWaiter} />
+          <ComponentVisualButton name="Cocina" className="btnnavbar m-2" id="btn-kitchen" buttonOnClick={this.containerKitchen} />
+          <ComponentVisualButton name="Entrega" className="btnnavbar m-2" id="btn-delivery" buttonOnClick={this.containerDelivery} />
 
         </div>
         <div id="containerrole">
