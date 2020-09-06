@@ -6,14 +6,14 @@
     text-align: center; 
     display:block;
     margin:auto;
-    background-color: #283593!important;
+    background-color: #1976D2!important;
     color:white; 
-    border: solid 1px #283593!important;
+    border: solid 1px #1976D2!important;
 }
 
 .burgertype:active, .toppings:active{
-    background-color: #EF6C00!important;
-    background-color: #EF6C00!important; 
+    background-color: #283593!important;
+    background-color: #283593!important; 
 }
 
 .modalbody{

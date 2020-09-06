@@ -6,14 +6,14 @@
     font-size:18px;
     font-family: 'Lato', sans-serif;
     text-align: center; 
-    background-color: #283593!important;
+    background-color: #1976D2!important;
     color:white;  
-    border: solid 1px #283593!important;  
+    border: solid 1px #1976D2!important;  
 }
 
 .breakfast:active, .lunch:active{
-    background-color: #EF6C00!important;
-    border-color: #EF6C00!important;      
+    background-color: #283593!important;
+    border-color: #283593!important;      
 }
 
 .lunch {
@@ -22,9 +22,9 @@
     font-size:18px;
     font-family: 'Lato', sans-serif;
     text-align: center; 
-    background-color: #283593!important;
+    background-color: #1976D2!important;
     color:white;   
-    border: solid 1px #283593!important;  
+    border: solid 1px #1976D2!important;  
 }
 
 h6{
