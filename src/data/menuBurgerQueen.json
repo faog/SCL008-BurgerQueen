@@ -50,11 +50,11 @@
 					"product": "Agua",
 					"size": [
 						{
-							"product": "500ml",
+							"product": "500 ml",
 							"price": 500
 						},
 						{
-							"product": "750ml",
+							"product": "750 ml",
 							"price": 800
 						}
 					]
@@ -63,11 +63,11 @@
 					"product": "Gaseosa",
 					"size": [
 						{
-							"product": "500ml",
+							"product": "500 ml",
 							"price": 700
 						},
 						{
-							"product": "750ml",
+							"product": "750 ml",
 							"price": 1000
 						}
 					]
@@ -86,7 +86,7 @@
 			"price": 700
 		},
 		{
-			"product": "Sandwich de jamón y queso",
+			"product": "Sandwich jamón/queso",
 			"price": 1000
 		},
 		{
