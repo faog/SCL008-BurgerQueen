@@ -98,8 +98,8 @@ class ComponentVisualMenuOptions extends Component {
     return (
       <>
         <h5>Ingrese la orden</h5>
-        <ComponentVisualButton name="Desayuno" className="btnbreakfast m-1" buttonOnClick={this.breakfast} />
-        <ComponentVisualButton name="Almuerzo/Cena" className="btnlunch-dinner m-1" buttonOnClick={this.lunch} />
+        <ComponentVisualButton name="Desayuno" className="btnbreakfast m-1" data-cy="btn-breakfast" buttonOnClick={this.breakfast} />
+        <ComponentVisualButton name="Almuerzo/Cena" className="btnlunch-dinner m-1" data-cy="btn-dinner" buttonOnClick={this.lunch} />
         <div id="menuoptions">
           {this.state.buttons}
         </div>

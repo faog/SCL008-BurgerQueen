@@ -94,6 +94,7 @@ class ComponentVisualModal extends Component {
                 type="radio"
                 name="typesradio"
                 className="burgertype m-1"
+                data-cy = {burgertype}
                 variant="primary"
                 value={burgertype}
                 key={burgertype}
@@ -128,6 +129,7 @@ class ComponentVisualModal extends Component {
                   type="radio"
                   name="toppingsradio"
                   className="toppings m-1"
+                  data-cy ={`topping-${topping.product}`}
                   variant="primary"
                   value={topping.product}
                   key={`${this.props.product}_${topping.product}`}
@@ -140,10 +142,10 @@ class ComponentVisualModal extends Component {
           </div>
         </Modal.Body>
         <Modal.Footer className="modalfooter">
-          <Button variant="secondary" className="btnfootermodal" onClick={this.handleClose}>
+          <Button variant="secondary" data-cy="btn-cancelar" className="btnfootermodal" onClick={this.handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" className="btnfootermodal" onClick={this.handleAdd}>
+          <Button variant="primary" data-cy="btn-agregar" className="btnfootermodal" onClick={this.handleAdd}>
             Agregar
           </Button>
         </Modal.Footer>
